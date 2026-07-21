@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Allen's personal blog - 技术 &amp; 学习笔记</title><meta name="author" content="CHY"><meta name="copyright" content="CHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习与思考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Allen&#39;s personal blog">
+<meta property="og:url" content="https://myblog.chenhy25.workers.dev/index.html">
+<meta property="og:site_name" content="Allen&#39;s personal blog">
+<meta property="og:description" content="记录学习与思考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://myblog.chenhy25.workers.dev/img/butterfly-icon.png">
+<meta property="article:author" content="CHY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myblog.chenhy25.workers.dev/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Allen's personal blog",
+  "alternateName": [
+    "技术 & 学习笔记",
+    "myblog.chenhy25.workers.dev"
+  ],
+  "url": "https://myblog.chenhy25.workers.dev/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myblog.chenhy25.workers.dev/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.6.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Allen\'s personal blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Allen's personal blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Allen's personal blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/01_%E9%A2%84%E5%85%88%E5%87%86%E5%A4%87_%E5%AE%89%E8%A3%85/" title="01 预先准备：安装">01 预先准备：安装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.736Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">见 qsymm 笔记，会装 qsymm 的话 kwant 顺便也装了就行了。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/02_Kwant%E7%AE%80%E4%BB%8B/" title="02 Kwant 简介">02 Kwant 简介</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.731Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">2.1 关于 kwant kwant 是一个用于数据计算紧束缚近似下量子输运相关模型的 python 包，通常来说比其他可用的组件速度要更快一点，甚至快于那些完全用 FORTRAN 或者 C++ 写的（但其实除了关心极大量的模型的组通常快不快无所谓）。 紧束缚模型可以解释一系列量子现象，比如说金属、石墨烯、拓扑绝缘体、量子霍尔效应、超导、自旋极化器件。 Kwant 可以计算：量子输运、扩散关系、波函数、各种各样的格林函数、非平衡态系统。 顺便，他在这里也提到了 Datta 的书，确实不错，建议先看完用 matlab 跟着做一下课后作业。其实是有两本，一本 From Atom to Transistor，一本 Nanostructure。 2.2 What’s New in kwant 好吧这个其实我还用不太到。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_1_%E5%88%9D%E6%AD%A5_%E6%9E%84%E5%BB%BA%E7%AE%80%E5%8D%95%E7%B3%BB%E7%BB%9F%E8%AE%A1%E7%AE%97%E7%94%B5%E5%AF%BC%E7%8E%87/" title="03 进入正题：kwant 教程">03 进入正题：kwant 教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.727Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">3.1 初步：构建一个简单的系统，计算电导率 3.1.1 离散化哈密顿量 对于偏微分方程，我们都知道怎么操作：就是化成矩阵形式，利用类似泰勒展开的公式。比如说对于哈密顿量： $$ H = -\frac{\hbar^2}{2m}(\partial_x^2 + \partial_y^2) + V(y) $$ 我们可以将其写为： $$ H = \sum_{i,j} \left[ (V(a_i, a_j) + 4t) , |i,j\rangle\langle i,j| - t \left( |i+1,j\rangle\langle i,j| + |i,j\rangle\langle i+1,j| + |i,j+1\rangle\langle i,j| + |i,j\rangle\langle i,j+1| \right) \right] $$ 其中 $t = \dfrac{\hbar^2}{2ma^2}$ 对于 discretized 的系统以及 finite 的 $a$ 成立。 3.1.2 量子导线中的输运 首先打一个： 1import kwant 难绷，就像下图一样简单：      ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_02_quantum_well%E5%8A%BF%E5%9C%BA%E4%B8%8B%E7%9A%84%E9%80%8F%E5%B0%84%E7%8E%87/" title="03.2.2 quantum well，也即在势场下的透射率">03.2.2 quantum well，也即在势场下的透射率</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.724Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">我们考虑一个量子势阱，散射区域是一个圆环，圆环内部有势场分布，外部没有势场。势场分布由 potential 函数给出，这里我们用一个简单的 tanh 函数来描述 p-n 结。 首先定义晶格和散射区域的形状： 12345678910111213141516def make_system(r=10, w=2.0, pot=0.1):    #### Define the scattering region. ####    # circular scattering region    def circle(pos):        x, y = pos        return x**2 + y**2 &lt; r**2    syst = kwant.Builder()    # w: width of the potential maximum of the p-n junction    def potential(site):        (x, y) = site.pos        d = y * np.cosd(30) + x * np.sind(30)    ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_01_%E6%A0%BC%E7%82%B9%E4%B8%8A%E4%B8%8Ehopping%E5%85%83%E7%B4%A0%E7%9A%84%E7%9F%A9%E9%98%B5%E7%BB%93%E6%9E%84/" title="03.2.1 格点上与 hopping 元素的矩阵结构">03.2.1 格点上与 hopping 元素的矩阵结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.720Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">这是一个考虑自旋轨道耦合和塞曼效应情况下二维电子的哈密顿量： $$ H = \frac{-\hbar^2}{2m}(\partial_x^2 + \partial_y^2) - i\alpha(\partial_x \sigma_y - \partial_y \sigma_x) + E_Z \sigma_z + V(y) $$ 这个已经被研究得很彻底的哈密顿量在 nanowire 等系统中有很重要的性质，在这里我们将展示只要在之前的代码基础上略加改动就可以展示这种哈密顿量所导致的行为。 用到的是 tinyarray 包，简单起见，我们先定义泡利矩阵： 1234sigma_0 = tinyarray.array([[1, 0], [0, 1]])sigma_x = tinyarray.array([[0, 1], [1, 0]])sigma_y = tinyarray.array([[0, -1j], [1j, 0]])sigma_z = tinyarray.array([[1, 0], [0, -1]]) 准确地来说，这样我们的波函数就应该用 spinor 表示，也就是说态空间整...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_04_%E9%97%AD%E5%90%88%E7%B3%BB%E7%BB%9F_%E8%83%BD%E5%B8%A6%E7%BB%93%E6%9E%84/" title="03.2.4 闭合系统，能带结构">03.2.4 闭合系统，能带结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.717Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">这一节我们考虑一个闭合系统，即没有端口的系统，然后计算其能带结构。 首先定义一个闭合系统： 123456def make_system(a=1, t=1.0, W=10, L=30):    lat = kwant.lattice.square(a, norbs=1)    syst = kwant.Builder()    syst[(lat(x, y) for x in range(L) for y in range(W))] = 4 * t    syst[lat.neighbors()] = -t    return syst 然后计算其能带： 12345678def plot_bandstructure(flead, momenta):    bands = kwant.physics.Bands(flead)    energies = [bands(k) for k in momenta]    plt.figure()    plt.plot(momenta, energies)    plt.xlabel(&quot;momentum [1/a]&quot;) ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_03_nontrivial_shape/" title="03.2.3 nontrivial shape">03.2.3 nontrivial shape</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.713Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">这一节我们考虑一个非平凡的形状，即一个 SQUID 的形状。SQUID 是一个超导量子干涉仪，由两个约瑟夫森结组成。在这里我们用 kwant 来构建一个 SQUID 的形状，然后计算其电导率。 SQUID 的示意图如下：      图 1.2.3-1　SQUID 示意图 我们定义一个 SQUID 的形状，然后计算其电导率。代码如下： 1234567891011121314151617181920def make_system(a=1, t=1.0, W=10, L=30):    lat = kwant.lattice.square(a, norbs=1)    syst = kwant.Builder()    # Define the scattering region    def sq_shape(pos):        x, y = pos        return (0 &lt;= x &lt; L) and (0 &lt;= y &lt; W) and not (L/2 - 1 &lt;= x &lt; L/2 + 1 and W/2 - 1 &lt;= y &...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_05_%E7%9F%B3%E5%A2%A8%E7%83%AF%E8%83%BD%E5%B8%A6/" title="03.2.5 石墨烯能带">03.2.5 石墨烯能带</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.709Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">这一节我们考虑石墨烯的能带结构。石墨烯是一个二维的蜂窝状晶格，由两种不同的子格组成。 首先定义石墨烯晶格： 123456789import numpy as npimport kwantgraphene = kwant.lattice.general(    [(1, 0), (0.5, np.sqrt(3) / 2)],    [(0, 0), (0, 1 / np.sqrt(3))],    norbs=1)a, b = graphene.sublattices 这其中第一项 general function 是列出了晶格里的基本矢量（也就是定义元胞），第二个则是基矢量。 接下来我们定义散射区域的形状： 12345678910111213141516def make_system(r=10, w=2.0, pot=0.1):    #### Define the scattering region. ####    # circular scattering region    def circle(pos):        x, y = pos        return ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_06_%E8%B6%85%E5%AF%BC_%E8%BD%A8%E9%81%93%E8%87%AA%E7%94%B1%E5%BA%A6_%E5%AF%B9%E7%A7%B0%E6%80%A7%E5%92%8C%E5%AE%88%E6%81%92%E5%BE%8B/" title="03.2.6 超导：轨道自由度，对称性和守恒律">03.2.6 超导：轨道自由度，对称性和守恒律</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.706Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">这一节我们考虑超导系统。超导系统需要引入电子和空穴两个自由度，即 Nambu 表示。同时，超导系统具有粒子-空穴对称性，这是一个守恒律。 首先定义泡利矩阵和超导配对项： 123456789101112import numpy as npimport tinyarraysigma_0 = tinyarray.array([[1, 0], [0, 1]])sigma_x = tinyarray.array([[0, 1], [1, 0]])sigma_y = tinyarray.array([[0, -1j], [1j, 0]])sigma_z = tinyarray.array([[1, 0], [0, -1]])# Pauli matrices for electron-hole (tau) and spin (sigma) spacestau_x = tinyarray.array(np.kron(sigma_x, sigma_0))tau_y = tinyarray.array(np.kron(sigma_y, sigma_0))tau_z = tinyarray.array...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/21/03_2_07_%E8%AE%A1%E7%AE%97%E5%B1%80%E5%9F%9F%E7%9A%84%E9%87%8F_%E6%B5%81%E4%B8%8E%E5%AF%86%E5%BA%A6/" title="03.2.7 计算局域的量：流与密度">03.2.7 计算局域的量：流与密度</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-21T04:30:18.703Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kwant/">kwant</a></span></div><div class="content">这一节我们计算局域的量，包括磁矩、密度和流密度。 首先定义一个有磁矩分布的系统： 12345678910111213141516171819202122232425def make_system(L=80):    lat = kwant.lattice.square(norbs=1)    syst = kwant.Builder()    def square(pos):        return all(-L/2 &lt; p &lt; L/2 for p in pos)    # On-site Hamiltonian with spatially varying magnetization    def scattering_onsite(site, r0, delta, J):        x, y = site.pos        m = field_direction(x, y, r0, delta)        return J * m[2] * sigma_z  # only z component for simplicity    syst[lat...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CHY</div><div class="author-info-description">记录学习与思考</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/01_%E9%A2%84%E5%85%88%E5%87%86%E5%A4%87_%E5%AE%89%E8%A3%85/" title="01 预先准备：安装">01 预先准备：安装</a><time datetime="2026-07-21T04:30:18.736Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/02_Kwant%E7%AE%80%E4%BB%8B/" title="02 Kwant 简介">02 Kwant 简介</a><time datetime="2026-07-21T04:30:18.731Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/03_1_%E5%88%9D%E6%AD%A5_%E6%9E%84%E5%BB%BA%E7%AE%80%E5%8D%95%E7%B3%BB%E7%BB%9F%E8%AE%A1%E7%AE%97%E7%94%B5%E5%AF%BC%E7%8E%87/" title="03 进入正题：kwant 教程">03 进入正题：kwant 教程</a><time datetime="2026-07-21T04:30:18.727Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/03_2_02_quantum_well%E5%8A%BF%E5%9C%BA%E4%B8%8B%E7%9A%84%E9%80%8F%E5%B0%84%E7%8E%87/" title="03.2.2 quantum well，也即在势场下的透射率">03.2.2 quantum well，也即在势场下的透射率</a><time datetime="2026-07-21T04:30:18.724Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/03_2_01_%E6%A0%BC%E7%82%B9%E4%B8%8A%E4%B8%8Ehopping%E5%85%83%E7%B4%A0%E7%9A%84%E7%9F%A9%E9%98%B5%E7%BB%93%E6%9E%84/" title="03.2.1 格点上与 hopping 元素的矩阵结构">03.2.1 格点上与 hopping 元素的矩阵结构</a><time datetime="2026-07-21T04:30:18.720Z" title="发表于 2026-07-21 12:30:18">2026-07-21</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/kwant/"><span class="card-category-list-name">kwant</span><span class="card-category-list-count">15</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.1em; color: #999">数学</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">测试</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">17</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">17</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-07-21T05:18:17.319Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By CHY</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.6.0"></script><script src="/js/main.js?v=5.6.0"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
