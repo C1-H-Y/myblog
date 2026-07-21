@@ -18,11 +18,11 @@ nav:
   fixed: false
 
 menu:
-  # Home: / || fas fa-home
-  #list: /archives/ || fas fa-archive
-  #tags: /tags/ || fas fa-tags
-  #categories: /categories/ || fas fa-folder-open
-  #about: /about/ || fas fa-heart
+   Home: / || fas fa-home
+   list: /archives/ || fas fa-archive
+   tags: /tags/ || fas fa-tags
+   categories: /categories/ || fas fa-folder-open
+   about: /about/ || fas fa-heart
 
 # --------------------------------------
 # Code Blocks Settings
