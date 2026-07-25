@@ -465,8 +465,10 @@ math:
     tags: none
 
   katex:
-    # Enable the copy KaTeX formula
-    copy_tex: false
+    enable: true
+    per_page: true
+    copytex: true
+
 
 
 # --------------------------------------
