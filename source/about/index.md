@@ -22,7 +22,7 @@ My name is **Haoyu Chen**. I am currently an undergraduate student majoring in P
 
 ## Contact
 
-- **Email:** your@email.com
+- **Email:** chenhy25@mails.tsinghua.edu.cn
 - **GitHub:** [@C1-H-Y](https://github.com/C1-H-Y)
 
 
