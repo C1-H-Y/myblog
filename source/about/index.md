@@ -25,12 +25,4 @@ My name is **Haoyu Chen**. I am currently an undergraduate student majoring in P
 - **Email:** your@email.com
 - **GitHub:** [@C1-H-Y](https://github.com/C1-H-Y)
 
----
-title: 标签
-type: tags
----
 
----
-title: 分类
-type: categories
----
