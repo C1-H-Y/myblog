@@ -48,5 +48,3 @@ $$
 ## Mermaid 图表（可选）
 
 Butterfly 也支持 Mermaid，在 `_config.butterfly.yml` 里开 `mermaid.enable: true` 后可以这样用<span data-allow-html class='source-item source-aggregated' data-group-key='source-group-13' data-url='https://blog.csdn.net/gitblog_00755/article/details/146972260' data-id='turn0search17'><span data-allow-html class='source-item-num' data-group-key='source-group-13' data-id='turn0search17' data-url='https://blog.csdn.net/gitblog_00755/article/details/146972260'><span class='source-item-num-name' data-allow-html>csdn.net</span><span data-allow-html class='source-item-num-count'></span></span></span>：
-
-

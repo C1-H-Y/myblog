@@ -10,8 +10,8 @@ author: CHY
 language: zh-CN
 
 # URL
-url: https://myblog.chenhy25.workers.dev/
-root: /
+url: https://c1-h-y.github.io/myblog/
+root: /myblog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -27,6 +27,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - 'share/files/**/*'
 
 # Writing
 new_post_name: :title.md # File name of new posts
