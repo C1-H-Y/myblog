@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>相互作用电子系统 | Allen's personal blog</title><meta name="author" content="CHY"><meta name="copyright" content="CHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这个部分可能是最先把我绕迷糊的地方了，格林函数什么的就很恶心，然后又出来一堆奇奇怪怪的结论。而且这一章用到的方法都是凝聚态物理中的经典范式，所以不可谓不重要。 线性响应理论过去到现在主流的表述总是在不断发展的，从薛定谔方程，到海森堡绘景再到路径积分表述，计算工具的不同导致了表达方式的不同，我们采取循序渐进的叙述方式好了。描述随着时间响应最自然的表述是海森堡绘景。我们知道在哈密顿量为$H&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="相互作用电子系统">
+<meta property="og:url" content="https://c1-h-y.github.io/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Allen&#39;s personal blog">
+<meta property="og:description" content="这个部分可能是最先把我绕迷糊的地方了，格林函数什么的就很恶心，然后又出来一堆奇奇怪怪的结论。而且这一章用到的方法都是凝聚态物理中的经典范式，所以不可谓不重要。 线性响应理论过去到现在主流的表述总是在不断发展的，从薛定谔方程，到海森堡绘景再到路径积分表述，计算工具的不同导致了表达方式的不同，我们采取循序渐进的叙述方式好了。描述随着时间响应最自然的表述是海森堡绘景。我们知道在哈密顿量为$H&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c1-h-y.github.io/myblog/img/chy.png">
+<meta property="article:published_time" content="2026-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-30T08:22:03.621Z">
+<meta property="article:author" content="CHY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c1-h-y.github.io/myblog/img/chy.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "相互作用电子系统",
+  "url": "https://c1-h-y.github.io/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/",
+  "image": "https://c1-h-y.github.io/myblog/img/chy.png",
+  "datePublished": "2026-07-24T16:00:00.000Z",
+  "dateModified": "2026-08-30T08:22:03.621Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CHY",
+      "url": "https://c1-h-y.github.io/myblog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog/img/chy.png"><link rel="canonical" href="https://c1-h-y.github.io/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/myblog/css/index.css?v=5.6.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '相互作用电子系统',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #0a0a0a;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog/"><span class="site-name">Allen's personal blog</span></a><a class="nav-page-title" href="/myblog/"><span class="site-name">相互作用电子系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">相互作用电子系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-30T08:22:03.621Z" title="更新于 2026-08-30 16:22:03">2026-08-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>这个部分可能是最先把我绕迷糊的地方了，格林函数什么的就很恶心，然后又出来一堆奇奇怪怪的结论。而且这一章用到的方法都是凝聚态物理中的经典范式，所以不可谓不重要。</p>
+<h1 id="线性响应理论"><a href="#线性响应理论" class="headerlink" title="线性响应理论"></a>线性响应理论</h1><p>过去到现在主流的表述总是在不断发展的，从薛定谔方程，到海森堡绘景再到路径积分表述，计算工具的不同导致了表达方式的不同，我们采取循序渐进的<br>叙述方式好了。描述随着时间响应最自然的表述是海森堡绘景。我们知道在哈密顿量为$H&#x3D;H(t)$的系统中，物理量随时间的变化写为：</p>
+<p>$$<br>A(t)&#x3D;e^{i\int H(t)dt}Ae^{-i\int H(t)dt}<br>$$</p>
+<p>我们关心物理量$A$关于物理场$\epsilon$的响应，也就是说A可以写为$\epsilon$的函数：</p>
+<p>$$<br>A(t)&#x3D;\int_{-\infty}^{t}\chi_{AB}(t-t’)\epsilon(t’)dt’<br>$$</p>
+<p>在相互作用并不大的时候，一般来说响应函数$\chi_{AB}$并不依赖于AB，这是线性响应理论所做的近似，形式上等价于微扰哈密顿量写为：</p>
+<p>$$<br>H&#x3D;H_0+H_1,H_1(t)&#x3D;\epsilon(t)B(t)<br>$$</p>
+<p>这样代入A的表达式，可以得到：</p>
+<p>$$<br>\dot{A(t)}&#x3D;-i[A(t),B(t’)]\epsilon(t’)<br>$$</p>
+<p>解得：</p>
+<p>$$<br>A(t)&#x3D;-i\int [A(t),B(t’)]\epsilon(t’)dt’<br>$$</p>
+<p>所以说响应函数$\chi_{AB}$可以写为：</p>
+<p>$$<br>\chi_{AB}(t-t’)&#x3D;-i\theta(t-t’)[A(t),B(t’)]<br>$$</p>
+<p>额这看起来也不是很靠谱啊,嗯反正也没什么用哈哈，感觉还是路径积分更加好理解一点。</p>
+<p>然后介绍路径积分表示，由此也更容易引入有限温度的平均。对于上述的哈密顿量，对应的路径积分写为：</p>
+<p>$$<br>S&#x3D;\int_{0}^{\beta}d\tau\int d^dr B(\tau)\epsilon(\tau)<br>$$</p>
+<p>这里直接使用虚时格林函数，在热力学平均下，得到A的平均值：</p>
+<p>$$<br>\langle A(\tau)\rangle_{h}&#x3D;\langle A(\tau)\rangle_{h&#x3D;0}+\int_0^{\beta}\langle A(\tau) B(\tau’)\rangle_c \epsilon(\tau’)d\tau’<br>$$</p>
+<p>这样</p>
+<p>$$<br>\chi_{AB}(\tau-\tau’)&#x3D;\theta(\tau-\tau’)\langle A(\tau)B(\tau’)\rangle_c<br>$$</p>
+<p>其中$\langle A(\tau)B(\tau’)\rangle_c&#x3D;\langle A(\tau)B(\tau’)\rangle-\langle A(\tau)\rangle\langle B(\tau’)\rangle$<br>等效于单联通的费曼图。在周期性驱动或者是有限温度下，可以对关联函数作傅里叶展开：</p>
+<p>$$<br>\langle A(t)B(t’)\rangle&#x3D;Z^{-1}\sum_{n,m}\theta(t-t’)e^{-\beta E_n}(\langle n|A|m\rangle\langle m|B|n\rangle e^{i\omega_{nm}t}\pm\langle n|B|m\rangle\langle m|A|n\rangle e^{-i\omega_{nm}t})<br>$$</p>
+<p>$$<br>\langle A|B\rangle_{\omega-i\eta}&#x3D;-iZ^{-1}\sum_{n,m}e^{-\beta E_n}(e^{\beta(E_n-E_m)}\pm1)\langle n|A|m\rangle\langle m|B|n\rangle &#x2F;(\hbar\omega-(E_n-E_m)-i\eta)<br>$$</p>
+<p>这里加了$|$代表对易关系</p>
+<h1 id="库仑电子气"><a href="#库仑电子气" class="headerlink" title="库仑电子气"></a>库仑电子气</h1><p>好了接下来就开始研究相互作用电子系统，只考虑库仑相互作用，哈密顿量写为：</p>
+<p>$$<br>H&#x3D;\sum_{k}\psi_k^\dagger\frac{(p+eA)^2}{2m}\psi_k+\sum_{k}V(q)\rho_q\rho_{-q}+\rho_q\phi_q<br>$$</p>
+<p>其中$V(q)&#x3D;\frac{4\pi e^2}{q^2}$，$\rho_q&#x3D;-\sum_{k}e\psi_{k-q}^\dagger\psi_k$在电磁场作用下，电子会产生<br>感应的电荷分布，以至于产生屏蔽的效应，表现为宏观上相互作用电子系统产生等效的介电常数，电导率等。记为电子间相互作用可能变为$V(q)\frac{\rho_q\rho_{-q}}{\epsilon}$</p>
+<p>记外加的电磁场大小为$E_{ext}$，由麦克斯韦方程：</p>
+<p>$$<br>\nabla\cdot(E_{ext}-E_{int})&#x3D;4\pi\rho,iq\cdot(E_{ext}(q)-E_{int}(q))&#x3D;4\pi\rho_q<br>$$</p>
+<p>由于电场作用，$\rho$将会产生微小变化，由线性响应理论：</p>
+<p>$$<br>\begin{aligned}<br>\delta\rho&#x3D;\chi_{\rho\rho}\phi+\chi_{\rho j_i}A_i\<br>    \delta j_i&#x3D;\chi_{j_i\rho}\phi+\chi_{j_i j_j}A_j<br>\end{aligned}<br>$$</p>
+<p>在静电场中，$iq\phi_q&#x3D;E_{int,q}$，联立以上方程，我们可以得到：</p>
+<p>$$<br>E_{int,q}&#x3D;\frac{E_{ext,q}}{1-4\pi\chi_{\rho\rho}&#x2F;q^2}<br>$$</p>
+<p>这表明了在电场的作用下，电荷密度会发生响应的变化，正比于内部电场的大小，真的是正比于内部电场吗？在这里<br>似乎是显然的，但过会用费曼图解释时我们会发现实际上并不是那么显然。好了我们只需要求出$\chi_{\rho\rho}$就好啦。</p>
+<p>$$<br>\chi_{\rho\rho}(q,i\omega_n)&#x3D;-\frac{1}{\beta V}\sum_{k,\sigma}G_{\sigma,k+q,i\omega_\nu+i\omega_n}G_{\sigma,k,i\omega_\nu}&#x3D;-\frac{2}{\beta V}\sum_{k,\nu}\frac{1}{i\omega_\nu-E_k}\frac{1}{i\omega_\nu+i\omega_n-E_{k+q}}<br>$$</p>
+<p>利用Matsubara求和规则：</p>
+<p>$$<br>\sum_{\nu}f(i\omega_\nu)&#x3D;-\frac{1}{\beta}\int n_{F}(\epsilon)f(\epsilon)d\epsilon<br>$$</p>
+<p>将分母拆开来为两个Matsubara相减，然后我们就可以得到介电常数的表达式：</p>
+<p>$$<br>\frac{1}{\epsilon(i\omega_\nu)}&#x3D;1+2V(q)\sum_{k}\frac{n_{k+q}-n_{k}}{E_{k+q}-E_k-i\omega_\nu}<br>$$</p>
+<p>变换到实频率只要$\omega_\nu\rightarrow i\omega$就可以了。同时，有对称性，还可以做代换，将分子改写为：$n_k-n_{k+q}&#x3D;n_k(1-n_{k+q})-n_{k+q}(1-n_k)$<br>可以更加清晰的看出电子-空穴对激发的效果。总之相应的RPA近似下的介电函数即为：</p>
+<p>$$<br>\epsilon(q,\omega)&#x3D;1-\frac{2v(q)}{\hbar}\sum_{k}n_k(1-n_{k+q}){\frac{1}{\omega-\omega_{kq}+i\eta}-\frac{1}{\omega+\omega_{kq}+i\eta}}<br>$$</p>
+<p>其中$\omega_{kq}&#x3D;E_{k+q}-E_k$。<br>嗯为了验证结论的正确性，我们也可以用线性响应理论再算一遍。定义$\rho_{kq}&#x3D;\psi^\dagger_{k-q}\psi_k$当存在$V(q)$作为微扰时，线性响应自然就是</p>
+<p>$$<br>\chi_{\rho_{kq}\rho_{q}}&#x3D;-i\sum_{q’}[\rho_{-q’},\rho_{kq}]&#x3D;-2i(n_k-n_{k+q})<br>$$</p>
+<p>代入之前的傅里叶变换</p>
+<p>$$<br>\chi_{\rho_{kq}\rho_{q}}&#x3D;-\sum_{k}\frac{n_{k+q}-n_{k}}{E_{k+q}-E_k-\omega}<br>$$</p>
+<p>就又回到了之前的表达式。特别地，如果只考虑自由电子分布，经计算可以得到介电函数的明确表示式：</p>
+<p>$$<br>\epsilon_1(q,\omega)&#x3D;1+\frac{\lambda^2}{q^2}{\frac{1}{2}+\frac{k_F}{4q}[((\frac{\omega+\hbar q^2&#x2F;2m}{qv_F})^2-1)ln|\frac{\omega-qv_F+\hbar q^2&#x2F;2m}{\omega+qv_F+\hbar q^2&#x2F;2m}|-((\frac{\omega-\hbar q^2&#x2F;2m}{qv_F})^2-1)ln|\frac{\omega-qv_F-\hbar q^2&#x2F;2m}{\omega+qv_F-\hbar q^2&#x2F;2m}|]}<br>$$</p>
+<p>$$<br>\epsilon_2(q,\omega)&#x3D;\begin{cases}<br>        \frac{\pi}{2}\frac{\lambda^2}{q^2}\frac{\omega}{qv_F}&amp;(0\leq\omega\leq qv_F-\hbar q^2&#x2F;2m)\<br>        \frac{\pi}{2}\frac{\lambda^2}{q^2}\frac{k_F}{q}[1-\frac{(\omega-\hbar q^2&#x2F;2m)^2}{((qv_F)^2)}]&amp;(qv_F-\hbar q^2&#x2F;2m\leq\omega\leq qv_F+\hbar q^2&#x2F;2m)\<br>        0&amp;(qv_F+\hbar q^2&#x2F;2m\leq\omega)<br>    \end{cases}<br>$$</p>
+<p>介电常数的虚部代表在电介质中的电磁振荡存在耗散，这种耗散正是由于粒子-空穴对的元激发导致的。</p>
+<div align="center">
+  <img src="/myblog/images/4.8.png" width="400" alt="元激发区域"/>
+
+</div>
+
+<p>如图所示的三个区域中，绿色区域发生集体激发，集体振荡时$\Im\epsilon&#x3D;0$，蓝色区域会发生个别元激发，而红色区域发生一个元激发。具体来讲，元激发对应于电子体系<br>产生的自发振荡，也就是说外扰动$E_{ext}&#x3D;0$时内部仍然存在V，因此元激发必须满足$\epsilon(q,\omega)&#x3D;0$的条件。至于说是否存在振荡则由$\Im\epsilon$是否等于0来决定。<br>在高频率近似下，介电常数的实部可以近似为：</p>
+<p>$$<br>Re(\epsilon)&#x3D;1-\frac{2V(q)}{\hbar}\sum_{k}n_k\frac{\omega_{kq}}{\omega^2}(1+\frac{\omega_{kq}^2}{\omega^2})&#x3D;1-\frac{\omega_q^2}{\omega^2}<br>$$</p>
+<p>其中$\omega_q^2&#x3D;\omega_p^2+\frac{3}{5}q^2v_F^2(v_F&#x3D;\frac{\hbar k_F}{m})$此等离子振荡大小大概为$10eV$，并不容易激发。将个别激发区域的边界画在下图中，其中仍然<br>是绿色区域代表集体激发，蓝色区域代表个别激发，红色区域表示带有阻尼振荡的激发。红色的线表示了等离激元色散曲线。</p>
+<div align="center">
+  <img src="/myblog/images/4.9.png" width="400" alt="完整的元激发示意图"/>
+
+</div>
+
+<p>前面提到了，在蓝色与红色区域，由于$\Im\epsilon\neq0$，集体振荡准粒子的寿命为0。我们可以利用费米黄金定则解释这一现象。波矢k的电子在经过<br>$V(q)$与其他电子发生相互作用后，会产生一个动量大小为$k-q$，能量大小为$E_{k-q}$的粒子，仍然在费米面之外。这一散射过程满足条件$E_k&gt;E_{k-q}&gt;\mu_0$发生的速率为：</p>
+<p>$$<br>W&#x3D;\frac{2\pi}{\hbar}\sum_{p,\sigma}|V(q,\omega)|^2n_p(1-n_{p+q})\delta(\omega-\omega_{pq})<br>$$</p>
+<p>其中$V(q)&#x3D;\frac{4\pi e^2}{q^2\epsilon}$根据无规相近似公式，再省略掉$\delta(\omega+\omega_{mn})$可以将跃迁速率写为：</p>
+<p>$$<br>\frac{1}{\tau_k}&#x3D;-2\sum_{q}v(q)\Im[\frac{1}{\epsilon(q,\omega)}]<br>$$</p>
+<p>当然，我们也可以根据格林函数方法，由于电子自能的虚部写为：$\Im\Sigma_r&#x3D;\Im[v(q)&#x2F;\epsilon]$，同时谱函数$A(\omega)&#x3D;\frac{\Im\Sigma&#x2F;\pi}{(E-E_0-\Re[\Sigma])^2+(\Im\Sigma)^2}$对应的半高全宽变为$2\Im\Sigma_r$，所以<br>我们又发现了一个公式：</p>
+<p>$$<br>\frac{1}{\tau_k}&#x3D;-2\Im\Sigma_r<br>$$</p>
+<p>在长波极限下，近似算出费米面附近准电子的寿命$\frac{1}{\tau_k}&#x3D;\frac{\pi^2\sqrt{3}}{128}\omega_p(\frac{E_k-\mu_0}{\mu_0})^2$。而格林函数实部对外则表现为改变了有效的<br>能谱。在能量的极点附近，$\Re\Sigma_r&#x3D;\Re\Sigma_r(k,E_k)+<a href="%5Comega-E_k">\frac{\partial\Sigma_r(k,\omega)}{\partial\omega}</a>$。我们还记得态密度是谱密度的积分，定义：</p>
+<p>$$<br>Z_k^{-1}&#x3D;1-[\frac{\partial\Sigma_r(k,\omega)}{\partial\omega}]<br>$$</p>
+<p>这样修正后的谱密度积分得到新的态密度为：</p>
+<p>$$<br>n_{k\sigma}&#x3D;Z_k\int_{-\infty}^\mu \frac{\Gamma_k&#x2F;\pi}{(\omega-E_k)^2+\Gamma_k^2}d\omega&#x3D;\begin{cases}<br>        Z_k&amp;(E_k&lt;\mu)\<br>        0&amp;(E_k&gt;\mu)<br>    \end{cases}<br>$$</p>
+<p>通过费米面时准粒子的占据数突变从1变为了$Z_k$。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog">CHY</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/">https://c1-h-y.github.io/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://c1-h-y.github.io/myblog" target="_blank">Allen's personal blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/myblog/img/chy.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/myblog/2026/07/25/06_%E8%B4%B9%E7%B1%B3%E6%B6%B2%E4%BD%93/" title="费米液体"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">费米液体</div></div><div class="info-2"><div class="info-item-1">费米液体的主要贡献者其实是朗道啊。实际上应该是叫朗道费米液体，其载荷粒子是准粒子。定义为没有相互作用的粒子系统，一个突出特征就是面对微扰的鲁棒性，我们知道Coulomb相互作用实际上在电子气中相当重要，但是实际上费米液体理论依然适用，由于能量为$\epsilon$的准粒子激发寿命为: $$\tau^{-1}(\epsilon)\approx\epsilon^2+\pi^2T^2$$ 这是由电子满足的泡利不相容原理所保证的，具体证明如下：只考虑二体相互作用导致的衰变$\epsilon_1+\epsilon_2&#x3D;\epsilon_3+\epsilon_4$，那么衰变率可以写为： $$\frac{1}{\tau} &#x3D; 2\pi \int |V|^2 \rho(\epsilon_2)\rho(\epsilon_3)\rho(\epsilon_4) f(\epsilon_2)(1-f(\epsilon_3))(1-f(\epsilon_4)) \delta(\epsilon_1+\epsilon_2-\epsilon_3-\epsilon_4) d\epsilon_2 ...</div></div></div></a><a class="pagination-related" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</div></div><div class="info-2"><div class="info-item-1">对称性破缺什么是对称性破缺？在正常我们所研究的系统中，空间永远是处处均匀且各向同性的，满足空间反演对称性以及时间反演对称性。从宇宙学这方面开始讲起，有一种假说是说现在基本粒子满足的SU(3)对称性是由于宇宙大爆炸从更高的对称性破缺而产生的。另外，对于温度足够高的气体，会气化并且变成等离子体。这样的状态显然适合基本的物理方程是等价的。但冷物质确实完全不同的情况。当你踢一块石头，刚度将导致其内部粒子处在原来位置不动，但平移对称性处处被破坏。不同于像天体中引力波实际上并不怎么改变空间的性质，那些天体局部的物理方程仍然保持各向同性。但对于气体液体到固体的相变，一瞬间整个系统都变得各向异性了，我们对这种环境的描述要发生彻底的改变。而激光则属于是另一种对称性破缺，在激光的相变过程中，我们知道发生了粒子数反转之类的事情，这可以看作是局域的对称性破缺。 不过对称性破缺并不是冷物质改变其行为唯一的方式，比如说近藤问题中，系统实际上是连续的从局域化的磁性相转变到了非磁性相。许多有局限的维度的系统都展现出了这样的性质。物理上的实现当然是近似的，但是呢确实能展现出一维系统的这些性质。实验上表明，当物体冷...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CHY</div><div class="author-info-description">记录学习与思考</div><div class="site-data"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%93%8D%E5%BA%94%E7%90%86%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">线性响应理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%93%E4%BB%91%E7%94%B5%E5%AD%90%E6%B0%94"><span class="toc-number">2.</span> <span class="toc-text">库仑电子气</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-08-29T16:00:00.000Z" title="发表于 2026-08-30 00:00:00">2026-08-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型">Bethe Ansatz方法求解一维海森堡自旋链模型</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统">相互作用电子系统</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By CHY</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog/js/utils.js?v=5.6.0"></script><script src="/myblog/js/main.js?v=5.6.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
+  }
+
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
+
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script src="/js/custom.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON) | Allen's personal blog</title><meta name="author" content="CHY"><meta name="copyright" content="CHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="对称性破缺什么是对称性破缺？在正常我们所研究的系统中，空间永远是处处均匀且各向同性的，满足空间反演对称性以及时间反演对称性。从宇宙学这方面开始讲起，有一种假说是说现在基本粒子满足的SU(3)对称性是由于宇宙大爆炸从更高的对称性破缺而产生的。另外，对于温度足够高的气体，会气化并且变成等离子体。这样的状态显然适合基本的物理方程是等价的。但冷物质确实完全不同的情况。当你踢一块石头，刚度将导致其内部粒子处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">
+<meta property="og:url" content="https://c1-h-y.github.io/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/index.html">
+<meta property="og:site_name" content="Allen&#39;s personal blog">
+<meta property="og:description" content="对称性破缺什么是对称性破缺？在正常我们所研究的系统中，空间永远是处处均匀且各向同性的，满足空间反演对称性以及时间反演对称性。从宇宙学这方面开始讲起，有一种假说是说现在基本粒子满足的SU(3)对称性是由于宇宙大爆炸从更高的对称性破缺而产生的。另外，对于温度足够高的气体，会气化并且变成等离子体。这样的状态显然适合基本的物理方程是等价的。但冷物质确实完全不同的情况。当你踢一块石头，刚度将导致其内部粒子处">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c1-h-y.github.io/myblog/img/chy.png">
+<meta property="article:published_time" content="2026-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-30T08:22:03.620Z">
+<meta property="article:author" content="CHY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c1-h-y.github.io/myblog/img/chy.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)",
+  "url": "https://c1-h-y.github.io/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/",
+  "image": "https://c1-h-y.github.io/myblog/img/chy.png",
+  "datePublished": "2026-07-24T16:00:00.000Z",
+  "dateModified": "2026-08-30T08:22:03.620Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CHY",
+      "url": "https://c1-h-y.github.io/myblog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog/img/chy.png"><link rel="canonical" href="https://c1-h-y.github.io/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/myblog/css/index.css?v=5.6.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #0a0a0a;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog/"><span class="site-name">Allen's personal blog</span></a><a class="nav-page-title" href="/myblog/"><span class="site-name">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-30T08:22:03.620Z" title="更新于 2026-08-30 16:22:03">2026-08-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="对称性破缺"><a href="#对称性破缺" class="headerlink" title="对称性破缺"></a>对称性破缺</h1><h3 id="什么是对称性破缺？"><a href="#什么是对称性破缺？" class="headerlink" title="什么是对称性破缺？"></a>什么是对称性破缺？</h3><p>在正常我们所研究的系统中，空间永远是处处均匀且各向同性的，满足空间反演对称性以及时间反演对称性。从宇宙学这方面开始讲起，<br>有一种假说是说现在基本粒子满足的SU(3)对称性是由于宇宙大爆炸从更高的对称性破缺而产生的。另外，对于温度足够高的气体，会气化<br>并且变成等离子体。这样的状态显然适合基本的物理方程是等价的。但冷物质确实完全不同的情况。当你踢一块石头，刚度将导致其内部粒子处在<br>原来位置不动，但平移对称性处处被破坏。不同于像天体中引力波实际上并不怎么改变空间的性质，那些天体局部的物理方程仍然保持各向同性。<br>但对于气体液体到固体的相变，一瞬间整个系统都变得各向异性了，我们对这种环境的描述要发生彻底的改变。而激光则属于是另一种对称性破缺，<br>在激光的相变过程中，我们知道发生了粒子数反转之类的事情，这可以看作是局域的对称性破缺。</p>
+<p>不过对称性破缺并不是冷物质改变其行为唯一的方式，比如说近藤问题中，系统实际上是连续的从局域化的磁性相转变到了非磁性相。许多有局限的<br>维度的系统都展现出了这样的性质。物理上的实现当然是近似的，但是呢确实能展现出一维系统的这些性质。实验上表明，当物体冷却下来之后他一般并不保持原有的<br>对称性。我们的任务就是，对于这种对称性破缺导致的现象，提出“为什么”“怎么样”以及“在什么条件下”的问题。所以说大多数系统的</p>
+<p>为了让我们的问题更加清楚，在一些例子下讨论问题，考虑费米气体，哈密顿量为：</p>
+<p>$$<br>H&#x3D;\sum_{k,\sigma}\epsilon_kn_{k\sigma}<br>$$</p>
+<p>最低能态是指费米面以下的所有能态都被占据：</p>
+<p>$$<br>\psi_0&#x3D;\prod_{\epsilon_k&lt;\mu}c_{k\sigma}^\dagger\psi_{vac}<br>$$</p>
+<p>加入我们加入相互作用，基态肯定会改变，在这些相互作用中，一定是以全体粒子相对位置出现的</p>
+<p>$$<br>C&#x3D;{r_1,r_2,\dots}<br>$$</p>
+<p>这样我们可以给出一个充分的论证：取一个小盒子，考虑它的极值点，在极值点附近能量可以由二次型写出。对于更大的位移，可能有更多的极小值。</p>
+<p>现在我们假设相空间变到有$N&#x3D;mn$个原子的情况。一个假想可以是把mn个盒子拼起来然后把隔板拿掉。那我们期望是能量增大的（毕竟是排斥的）<br>但实际上粒子能量却会减少（对于均匀的费米气体，能量正比于$n^{2&#x2F;3}$）啊呀，这是怎么回事？这表明将隔板拿走需要的能量就是$\approx n$阶的。那么一定<br>有一个临界个数$n$，在此之上需要做功来构建体系(那也就是说明凝聚的状态是不稳定的)</p>
+<p>上述的推导当然是不严谨的，不完整之处在于对（必要的）状态变化的定义。但其结果却是显而易见的。于是在势能主导的情况下，粒子系统将会采取立方格子的<br>排列方式。这种刚体一样的排列方式让人感到很奇怪看起来并不能讲一个刚体的运动分开来看待。</p>
+<p>具有弱相互作用的玻色子却以另一种不同的方式打破对称性，我们将去分析这一情况，但此时的重点是此处动能并不允许对称的基态。</p>
+<p>想象一个盒子里有N个玻色子。对于单独的玻色子能级为$\frac{k^2}{2m}$，而k&#x3D;0显然是最小的。玻色子可以占据最低能态，整个系统看起来处于一个<br>对称性相当高的基态，早在统计力学课程中我们就知道了即使在大于0度仍然很多例子凝聚在基态。凝聚的温度正比于$n^{2&#x2F;3}$。这个系统的不对称性可以通过<br>将系统中的粒子拆分开来得到：假如吧我们的盒子拆成$m$份，每个里面有$n&#x3D;N&#x2F;m$个粒子，假定$a^\dagger_i$是第i个盒子的Bose振幅，相应的，总的<br>bose振幅就变为：</p>
+<p>$$<br>A_0&#x3D;\frac{1}{\sqrt{m}}\sum_{i}a_i<br>$$</p>
+<p>这样</p>
+<p>$$<br>N&#x3D;\langle A_0^\dagger A_0\rangle&#x3D;\langle\frac{1}{m}\sum_{i}n_i\rangle+\frac{1}{m}\sum_{i\neq j} \langle a_i^\dagger a_j\rangle<br>$$</p>
+<p>显然第二项大于第一项，这就意味着不同部分之间的correlation非常强。这就意味着BEC不同部分之间的相位保持高度的一致(当然了，都处于最低能态)<br>定义local的量子场振幅$\langle \psi(r)\rangle&#x3D;\sqrt{\rho}e^{-i\phi}$在BEC中相位可以是任意的，但必须处处相同。(处处相同体现了Goldstone mode吗？)<br>充分体现了凝聚态的性质：经常是局部的量决定了宏观的性质，正是因为这种相位的锁定造成了这种现象(长程的关联)</p>
+<p>规范对称性：只要哈密顿量是具有守恒律的，那么体系一定存在守恒荷：粒子数，动量，能量或什么的。这是系统哈密顿量就会表现出规范对称性。比如说我们前面的<br>BEC理论中哈密顿量满足粒子数守恒而导致$|\psi(r)|^2$同时出现，这样在$\psi,\psi^\dagger$乘以$e^{i\eta}$时哈密顿量不变，这就称作规范对称性。<br>局域规范对称性则意味着$\eta$可以是关于位置的函数。</p>
+<h3 id="连续还是不连续？一阶二阶相变之间的区别"><a href="#连续还是不连续？一阶二阶相变之间的区别" class="headerlink" title="连续还是不连续？一阶二阶相变之间的区别"></a>连续还是不连续？一阶二阶相变之间的区别</h3><p>朗道在1958年第一次指出了对称性破缺在相变中的重要性。朗道同样指出二级相变只可能在不同对称性的相之间发生。气液相变是不破坏对称性的相变，这也意味着在某个临界点<br>之后两相没有区别。由于在温度越过临界点之后要用不同的物理量来描述系统，我们认为在两相应该用不同的哈密顿量计算。可以先假定通常的气液相变可以拆为一些小方格，一些里面<br>是气相，一些里面是液相。这样我们就引入了新的参量：“粒子”数与“空穴数”。当然，即使用朗道的理论也可能产生一阶相变，比如说在哈密顿量里面展开到6阶就会发现在某一段会突然从0 跳变<br>到一个非0的位置。一个问题就是对称性破缺是否允许存在3阶相变的因子存在？</p>
+<p>之后他又提到了NH3分子中固有磁矩和振动能级之类的东西。有两件事情需要注意，第一件是即使是最低的振动能级也是关H3平面对称的。在ND3或者更重的<br>分子中隧穿项几乎不被考虑。</p>
+<h3 id="集体激发与涨落：自旋波，临界涨落，声子，序参量的维数"><a href="#集体激发与涨落：自旋波，临界涨落，声子，序参量的维数" class="headerlink" title="集体激发与涨落：自旋波，临界涨落，声子，序参量的维数"></a>集体激发与涨落：自旋波，临界涨落，声子，序参量的维数</h3><p>自旋波的部分我们已经比较熟悉了，从声子部分开始讲起好了。</p>
+<h1 id="poor-man’s-derivation-of-scaling-laws-for-the-Kondo-problem"><a href="#poor-man’s-derivation-of-scaling-laws-for-the-Kondo-problem" class="headerlink" title="poor man’s derivation of scaling laws for the Kondo problem"></a>poor man’s derivation of scaling laws for the Kondo problem</h1><p>Anderson的结果是从类似于RG的有效场论的角度来说明的，不同于近藤本来的想法。</p>
+<p>近藤模型本来要解决的问题是在低温下带有磁性杂质的粒子电阻呈现出$R\approx R_1T^5+R_2lnT$的特征。具有磁性杂质的哈密顿量可以写为：</p>
+<p>$$<br>H&#x3D;\frac{p^2}{2m}+V_int,V_int&#x3D;\frac{J_\pm}{2}(S_+s_-+S_-s_+)+J_zS_zs_z<br>$$</p>
+<p>我们首先考虑一阶散射，由费米黄金定则，跃迁速率为：</p>
+<p>$$<br>\frac{1}{\tau_{1k}}&#x3D;2\pi\frac{n_{imp}}{V}\int d(\epsilon_k-\epsilon_{k’})|J_{kk’}|^2(1-\cos\theta)\frac{d^3k’}{(2\pi)^3}<br>$$</p>
+<p>Anyway, 我们不太关心具体是哪个自旋的散射，反正就是有这么一个散射振幅在。对所有的自旋方向平方求和($2S_z^2+S_+S_-+S_-S_+&#x3D;2S(S+1)$)可以得到：</p>
+<p>$$<br>\frac{1}{\tau_{1k}}&#x3D;\frac{3n_{imp}J^2S(S+1)}{2e^2\hbar\epsilon_F}<br>$$</p>
+<p>再利用Drude公式就可以得到电导率什么的。我们可以看出，此时并没有什么奇怪的，除了散射振幅和自旋有关之外。接下来再去看<br>二阶修正。在二阶微扰下，格林函数G和散射矩阵T满足：</p>
+<p>$$<br>G&#x3D;G_0+G_0TG,T&#x3D;V_{int}+V_{int}G_0T<br>$$</p>
+<p>其中$G_0(\omega)&#x3D;\frac{1}{H_0-\omega}$为自由格林函数。费曼图如图所示：</p>
+<div align="center">
+  <img src="/myblog/images/4.png" width="400" alt="散射示意图"/>
+
+</div>
+
+<p>左边与右边的态可能是上下自旋不等。在Born近似下$\delta T&#x3D;V_{int}G_0V_{int}$,可以表示为：</p>
+<p>$$<br>\begin{aligned}<br>&amp;\delta T&#x3D;\sum_{k\sigma}^{|\epsilon|&lt;E}\sum_{k’\sigma}^{|\epsilon’|&lt;E}\sum_{k_1\sigma_1}\frac{1}{\omega-E_c-|\epsilon_k|}\<br> &amp;[c_{k\sigma}^\dagger c_{k_1\sigma_1} c_{k_1\sigma_1}^\dagger c_{k’\sigma’}[\frac{J_\pm}{2}(S_+s_-+S_-s_+)+J_zS_z(s_z)]<em>{\sigma\sigma_1}[\frac{J</em>\pm}{2}(S_+s_-+S_-s_+)+J_zS_z(s_z)]<em>{\sigma_1\sigma’}\<br>    &amp;+c</em>{k_1\sigma_1}^\dagger c_{k\sigma} c_{k’\sigma’}^\dagger c_{k_1\sigma_1}[\frac{J_\pm}{2}(S_+s_-+S_-s_+)+J_zS_z(s_z)]<em>{\sigma_1\sigma}[\frac{J</em>\pm}{2}(S_+s_-+S_-s_+)+J_zS_z(s_z)]_{\sigma’\sigma_1}]<br>\end{aligned}<br>$$</p>
+<p>当然是有$\sigma&#x3D;\sigma’$了，这然后对于中间态的自旋和动量求和，在$\frac{1}{2}$自旋下，$s_\pm^2&#x3D;0,s_+s_-&#x3D;\frac{1}{2}+s_z,s_-s_z&#x3D;-s_zs_-&#x3D;\frac{1}{2}s_-$可以得到：</p>
+<p>$$<br>\begin{aligned}<br>\delta T&#x3D;\sum_{k,k’,\sigma,\sigma’}\frac{\rho\Delta E}{\omega-E_c-|\epsilon_{k_1}|}[c_{k\sigma}^\dagger c_{k’\sigma’}[\delta_{\sigma\sigma’}(\frac{J_\pm^2}{8}+\frac{J_z^2}{16})-\frac{J_\pm^2S_zs_z}{2}-\frac{J_\pm J_z}{4}\<br>    (S_+s_-+S_-s_+)]+c_{k\sigma’}^\dagger c_{k’\sigma}[\delta_{\sigma\sigma’}(\frac{J_\pm^2}{8}+\frac{J_z^2}{16})-\frac{J_\pm^2S_zs_z}{2}-\frac{J_\pm J_z}{4}(S_+s_-+S_-s_+)]]<br>\end{aligned}<br>$$</p>
+<p>可以看出改变的振幅正比于$g&#x3D;\sum_{k,k’,\sigma,\sigma’}\frac{J^2\rho\Delta E}{\omega-E_c-|\epsilon_{k_1}|}$,在低温激发下$\omega\propto k_BT$,<br>因此积分得到$g\approx J^2\rho ln(\frac{k_BT}{E_F})$。以上实际上和近藤最初的思想没有什么差别。Anderson的想法巧妙之处就在于他考虑了这么一点，假设我们将费米面缩小一点，<br>比如说能量范围缩小为$E-\Delta E$,将考虑这一个小的薄层作为中间态，内部的相互作用看起来就会发生标度性的改变。数学化的操作就是引入投影算符$P_E$将能量范围投影到$E_c&gt;\epsilon_{k_1}&gt;E_c-\Delta E$的<br>范围。</p>
+<p>$$<br>T&#x3D;V+VP_EG_0T+V(1-P_E)G_0T<br>$$</p>
+<p>等效于有了$V’&#x3D;V+VP_EG_0V$。注意到在前一个式子中发现了正比于$s_z,s_\pm$的项，也就是说在标度变化下，相互作用的参量$J_\pm,J_z$也发生了相应的变化。</p>
+<p>$$<br>\begin{aligned}<br>\delta J_z&#x3D;-\frac{\rho\Delta E}{\omega-E_c+\Delta}J_\pm^2\<br>    \delta J_\pm&#x3D;-\frac{\rho\Delta E}{\omega-E_c+\Delta}J_\pm J_z<br>\end{aligned}<br>$$</p>
+<p>可以发现$J_\pm^2-J_z^2$为常数，当作renormailization之后这个系统的相互作用强度将沿着一个双曲线运动是吧，那么我们就发现在原点成为了一个奇点<br>同时，所有铁磁($J_z&lt;0$)的相在RG后面都向反铁磁方向流去($J_z&gt;0$)，而反铁磁相当$J\pm&lt;J_z$时都流向较大的相互作用，铁磁相当$J_\pm&gt;J_z$时都流向较小的<br>相互作用，如图所示:</p>
+<div align="center">
+  <img src="/myblog/images/4.1.png" width="500" alt="4.1.png"/>
+
+</div>
+
+<p>随着温度变化，系统的参量显然也会相应地变化。在$J_\pm&#x3D;J_z&#x3D;J$的路径处，我们可以看到：</p>
+<p>$$<br>\frac{\delta J}{\delta lnD}&#x3D;-2\rho_0J^2<br>$$</p>
+<p>其解为：</p>
+<p>$$<br>J(D)\rho_0&#x3D;\frac{\rho_0J(D_0)}{1+2\rho_0J(D_0)ln(\frac{D}{D_0})}<br>$$</p>
+<p>在温度$T_kk_B&#x3D;D_0e^{-\frac{1}{2\rho_0J(D_0)}}$以下可以看出相互作用变为负数，这时产生了束缚态。</p>
+<p>P.S.Anderson也写了比较严格的求解Kondo模型的算法，Kondo模型的RG理论由Wilson在20世纪70年代提出，成为RG运用的早期范例，同时我认为也是数值RG的开端。<br>我实际上上学期组会本来想讲Wilson的论文的来着，结果时间不够了，太长了我就不放上来了，有时间再写一下Anderson关于这个的求解。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog">CHY</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/">https://c1-h-y.github.io/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://c1-h-y.github.io/myblog" target="_blank">Allen's personal blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/myblog/img/chy.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">相互作用电子系统</div></div><div class="info-2"><div class="info-item-1">这个部分可能是最先把我绕迷糊的地方了，格林函数什么的就很恶心，然后又出来一堆奇奇怪怪的结论。而且这一章用到的方法都是凝聚态物理中的经典范式，所以不可谓不重要。 线性响应理论过去到现在主流的表述总是在不断发展的，从薛定谔方程，到海森堡绘景再到路径积分表述，计算工具的不同导致了表达方式的不同，我们采取循序渐进的叙述方式好了。描述随着时间响应最自然的表述是海森堡绘景。我们知道在哈密顿量为$H&#x3D;H(t)$的系统中，物理量随时间的变化写为： $$A(t)&#x3D;e^{i\int H(t)dt}Ae^{-i\int H(t)dt}$$ 我们关心物理量$A$关于物理场$\epsilon$的响应，也就是说A可以写为$\epsilon$的函数： $$A(t)&#x3D;\int_{-\infty}^{t}\chi_{AB}(t-t’)\epsilon(t’)dt’$$ 在相互作用并不大的时候，一般来说响应函数$\chi_{AB}$并不依赖于AB，这是线性响应理论所做的近似，形式上等价于微扰哈密顿量写为： $$H&#x3D;H_0+H_1,H_1(t)&#x3D;\epsilon(t)...</div></div></div></a><a class="pagination-related" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Bethe Ansatz方法求解一维海森堡自旋链模型</div></div><div class="info-2"><div class="info-item-1">一维可积自旋链模型是统计物理和凝聚态物理中少数可以严格求解的强关联多体量子系统，Bethe Ansatz（贝特拟设）是构造这类系统精确解的核心方法。本节以反铁磁XXX海森堡自旋链为例，从双磁子散射开始，完整推导Bethe Ansatz解，介绍其核心物理性质。 海森堡XXX自旋链哈密顿量我们考虑周期性边界条件下长度为$L$的一维自旋1&#x2F;2链，最近邻海森堡交换相互作用的哈密顿量为： $$H &#x3D; J \sum_{n&#x3D;1}^{L} \mathbf{S}n \cdot \mathbf{S}{n+1}, \quad \mathbf{S}_{L+1} &#x3D; \mathbf{S}_1$$ 其中$J&gt;0$对应反铁磁相互作用，$J&lt;0$对应铁磁相互作用，$\mathbf{S}_n &#x3D; (\sigma_n^x&#x2F;2, \sigma_n^y&#x2F;2, \sigma_n^z&#x2F;2)$是第$n$个格点的自旋1&#x2F;2算符，$\sigma^\alpha$为泡利矩阵。利用升降自旋算符$S_n^\pm &#x3D; S_n^x...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CHY</div><div class="author-info-description">记录学习与思考</div><div class="site-data"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%A0%B4%E7%BC%BA"><span class="toc-number">1.</span> <span class="toc-text">对称性破缺</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%A0%B4%E7%BC%BA%EF%BC%9F"><span class="toc-number">1.0.1.</span> <span class="toc-text">什么是对称性破缺？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E8%BF%98%E6%98%AF%E4%B8%8D%E8%BF%9E%E7%BB%AD%EF%BC%9F%E4%B8%80%E9%98%B6%E4%BA%8C%E9%98%B6%E7%9B%B8%E5%8F%98%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.2.</span> <span class="toc-text">连续还是不连续？一阶二阶相变之间的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E4%BD%93%E6%BF%80%E5%8F%91%E4%B8%8E%E6%B6%A8%E8%90%BD%EF%BC%9A%E8%87%AA%E6%97%8B%E6%B3%A2%EF%BC%8C%E4%B8%B4%E7%95%8C%E6%B6%A8%E8%90%BD%EF%BC%8C%E5%A3%B0%E5%AD%90%EF%BC%8C%E5%BA%8F%E5%8F%82%E9%87%8F%E7%9A%84%E7%BB%B4%E6%95%B0"><span class="toc-number">1.0.3.</span> <span class="toc-text">集体激发与涨落：自旋波，临界涨落，声子，序参量的维数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#poor-man%E2%80%99s-derivation-of-scaling-laws-for-the-Kondo-problem"><span class="toc-number">2.</span> <span class="toc-text">poor man’s derivation of scaling laws for the Kondo problem</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-08-29T16:00:00.000Z" title="发表于 2026-08-30 00:00:00">2026-08-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型">Bethe Ansatz方法求解一维海森堡自旋链模型</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统">相互作用电子系统</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By CHY</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog/js/utils.js?v=5.6.0"></script><script src="/myblog/js/main.js?v=5.6.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
+  }
+
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
+
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script src="/js/custom.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>非平衡态 | Allen's personal blog</title><meta name="author" content="CHY"><meta name="copyright" content="CHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="非平衡态经典体系下的非平衡态：从朗之万方程开始我们从简单的平衡态体系开始，对于温度为T的一维系统，给定其势能大小$V(X)$，其概率分布遵循玻尔兹曼分布： $$P(X)\propto \exp(-V(X)&#x2F;k_BT)$$ 处于能量最低的状态。然而，由于空间上的势垒，在绝热的改变势能的同时，系统的密度分布并不会处于能量的全局极小值。 作为例子，假设势能的形式写为： $$V(x)&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="非平衡态">
+<meta property="og:url" content="https://c1-h-y.github.io/myblog/2026/07/25/2_01_%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81/index.html">
+<meta property="og:site_name" content="Allen&#39;s personal blog">
+<meta property="og:description" content="非平衡态经典体系下的非平衡态：从朗之万方程开始我们从简单的平衡态体系开始，对于温度为T的一维系统，给定其势能大小$V(X)$，其概率分布遵循玻尔兹曼分布： $$P(X)\propto \exp(-V(X)&#x2F;k_BT)$$ 处于能量最低的状态。然而，由于空间上的势垒，在绝热的改变势能的同时，系统的密度分布并不会处于能量的全局极小值。 作为例子，假设势能的形式写为： $$V(x)&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c1-h-y.github.io/myblog/img/chy.png">
+<meta property="article:published_time" content="2026-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-30T08:22:03.623Z">
+<meta property="article:author" content="CHY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c1-h-y.github.io/myblog/img/chy.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "非平衡态",
+  "url": "https://c1-h-y.github.io/myblog/2026/07/25/2_01_%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81/",
+  "image": "https://c1-h-y.github.io/myblog/img/chy.png",
+  "datePublished": "2026-07-24T16:00:00.000Z",
+  "dateModified": "2026-08-30T08:22:03.623Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CHY",
+      "url": "https://c1-h-y.github.io/myblog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog/img/chy.png"><link rel="canonical" href="https://c1-h-y.github.io/myblog/2026/07/25/2_01_%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/myblog/css/index.css?v=5.6.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '非平衡态',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #0a0a0a;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog/"><span class="site-name">Allen's personal blog</span></a><a class="nav-page-title" href="/myblog/"><span class="site-name">非平衡态</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">非平衡态</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-30T08:22:03.623Z" title="更新于 2026-08-30 16:22:03">2026-08-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="非平衡态"><a href="#非平衡态" class="headerlink" title="非平衡态"></a>非平衡态</h1><h2 id="经典体系下的非平衡态：从朗之万方程开始"><a href="#经典体系下的非平衡态：从朗之万方程开始" class="headerlink" title="经典体系下的非平衡态：从朗之万方程开始"></a>经典体系下的非平衡态：从朗之万方程开始</h2><p>我们从简单的平衡态体系开始，对于温度为T的一维系统，给定其势能大小$V(X)$，其概率分布遵循玻尔兹曼分布：</p>
+<p>$$<br>P(X)\propto \exp(-V(X)&#x2F;k_BT)<br>$$</p>
+<p>处于能量最低的状态。然而，由于空间上的势垒，在绝热的改变势能的同时，系统的密度分布并不会处于能量的全局极小值。</p>
+<p>作为例子，假设势能的形式写为：</p>
+<p>$$<br>V(x)&#x3D;A+\frac{1}{2}Bx^2+\frac{1}{4}Cx^4+\frac{1}{6}Dx^6<br>$$</p>
+<p>定义$C_0&#x3D;-\sqrt{\dfrac{16BD}{3}}$，则系统状态满足：</p>
+<p>$$<br>0 &gt; C \begin{cases}<br>    &gt; C_0, &amp; \text{稳态} \<br>    &#x3D; C_0, &amp; \text{临界} \<br>    &lt; C_0, &amp; \text{亚稳态}\<br>    \end{cases}<br>$$</p>
+<p>取$B&#x3D;1, C&#x3D;-4, D&#x3D;1$，这时当$C&lt;4$时，发生了系统从稳态向亚稳态的转变。我们可以看出，由于中间的势垒阻挡，在经典状态下处在$x&#x3D;0$的态无法通过经典动力学过程到达$x\neq 0$的态。这也告诉我们在经典极限且温度为0的情况下，亚稳态理论上拥有无穷长的寿命。</p>
+<h2 id="亚稳态的动力学：弛豫过程与Fokker-Planck方程"><a href="#亚稳态的动力学：弛豫过程与Fokker-Planck方程" class="headerlink" title="亚稳态的动力学：弛豫过程与Fokker-Planck方程"></a>亚稳态的动力学：弛豫过程与Fokker-Planck方程</h2><p>正如上一节所述，由于玻尔兹曼分布的要求，经过迟豫过程，系统最终还是会回到热力学平衡态。因此我们需要引入动力学方程。对于迟豫过程，最简单的模型是朗之万模型：</p>
+<p>$$<br>\ddot{x}+\gamma\dot{x}+\omega_0^2x&#x3D;\eta<br>$$</p>
+<p>其解为：</p>
+<p>$$<br>\dot{x}(t)&#x3D;e^{-\gamma t}\int_{0}^{t}e^{\gamma t’}\eta(t’)dt’<br>$$</p>
+<p>由玻尔兹曼分布，我们可知$\dot{x}$的关联函数：</p>
+<p>$$<br>\langle\dot{x}(t_1)\dot{x}(t_2)\rangle&#x3D;\delta(t_1-t_2)k_BT<br>$$</p>
+<p>由二者相等可以推出$\langle\eta(t_1)\eta(t_2)\rangle&#x3D;2k_BT\gamma\delta(t_1-t_2)\equiv 2D\delta(t_1-t_2)$。（某种程度上的涨落-耗散定理）。对于这样的动力学方程，定义$p&#x3D;\dot{x}$，可以写为方程组：</p>
+<p>$$<br>\begin{aligned}<br>\dot{x}&amp;&#x3D;p\<br>\dot{p}+\gamma p+\omega_0^2x&amp;&#x3D;\eta<br>\end{aligned}<br>$$</p>
+<p>通过类比我们可以得到Fokker-Planck方程：</p>
+<p>$$<br>\partial_t P&#x3D;-\partial_x(pP)+\partial_p((\gamma p+\omega_0^2x)P)+\gamma k_BT\partial_p^2(P)<br>$$</p>
+<p>其稳态解满足：</p>
+<p>$$<br>\begin{aligned}<br>\partial_t P&amp;&#x3D;0\<br>\partial_x(pP)&amp;&#x3D;\partial_p(\omega_0^2xP)<br>\end{aligned}<br>$$</p>
+<p>解得$P(x,p)&#x3D;P(0,0)\exp(-\frac{p^2+\omega_0^2x^2}{2k_BT})$，正是玻尔兹曼分布，验证了在平衡态下Fokker-Planck方程的合理性。Fokker-Planck方程在许多介观热力学系统，包括物理、化学、电子工程系统中都具有许多应用（参见Risken, 1996）。</p>
+<div align="center">
+  <img src="/myblog/images/3.1.5.png" width="500" alt="3.1.5.png"/>
+</div>
+
+<p><em>稳态下谐振子在相空间中的概率分布</em></p>
+<p>对于更一般的多变量系统：</p>
+<p>$$<br>\begin{aligned}<br>\dot{X}<em>\alpha&amp;&#x3D;A</em>\alpha(X)+b_{\alpha\beta}(X)\xi_\beta(t);\<br>\langle\xi_\beta(t)\xi_\gamma(t’)\rangle&amp;&#x3D;2\delta_{\beta\gamma}\delta(t-t’),<br>\end{aligned}<br>$$</p>
+<p>那么这个系统的概率分布$P(X,t)$就可以由如下的Fokker-Planck方程描述（参见Kamenev, 2011）：</p>
+<p>$$<br>\partial_t P(X,t)&#x3D;-\partial_\alpha[A_\alpha(X)P(X,t)-\partial_\beta[D_{\alpha\beta}(X)P(X,t)]]<br>$$</p>
+<p>处在亚稳态的概率随时间呈现出$P(X,t)&#x3D;P(X)e^{-t&#x2F;\tau_{es}}$的变化规律。这也预示着在有限温度下所谓的绝热过程的改变速度应当存在一个下限，即$\frac{dC}{Cdt}\gtrsim 1&#x2F;\tau_{es}$。若速率太低，由热涨落引起的耗散将使亚稳态完全弛豫到稳定分布。</p>
+<div align="center">
+  <img src="/myblog/images/3.1.6.png" width="500" alt="3.1.6.png"/>
+</div>
+
+<p><em>Kramer问题示意图</em></p>
+<p>对于一维情况，Fokker-Planck方程简化为：</p>
+<p>$$<br>\partial_t P&#x3D;-\frac{1}{\tau_{es}}P&#x3D;\partial_x[-V’P-\partial_x[DP]]&#x3D;\partial_x J<br>$$</p>
+<p>近似认为此时$D$很小，以至于做积分运算时只有极大、极小值附近的$V$有效，即鞍点近似。这样解得：</p>
+<p>$$<br>\tau_{es}&#x3D;\sqrt{\frac{D(x_m)}{D(x_c)}}\frac{2\pi e^{\Delta S}}{\sqrt{V’’(x_c)|V’’(x_m)|}}<br>$$</p>
+<p>代入第1节中的势能，经计算可以得到相应的逃逸时间。</p>
+<h2 id="Keldysh理论"><a href="#Keldysh理论" class="headerlink" title="Keldysh理论"></a>Keldysh理论</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog">CHY</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog/2026/07/25/2_01_%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81/">https://c1-h-y.github.io/myblog/2026/07/25/2_01_%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://c1-h-y.github.io/myblog" target="_blank">Allen's personal blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/myblog/img/chy.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Mott绝缘体</div></div><div class="info-2"><div class="info-item-1">更为准确的说是Mott相变，来自相互作用对电子在材料中的阻滞现象。 比较经典的模型为Hubbard Model。 $$H&#x3D;-\sum_{\langle i,j\rangle,\sigma}c_{i\sigma}^\dagger c_{j\sigma}+U\sum_{i} n_{i\uparrow}n_{i\downarrow}$$ 包括了准粒子激发的能量以及自旋-自旋相互作用大小U. Bethe ansatzBethe ansatz指的是假设有相互作用的Hubbard model中的自选向上向下的电子仍然可以拆分为两种平面波来计算。实际上这和自旋波的计算是完全等价的，这我们将在下一节中证明这一点。不过相比自旋波，这里看起来更加让人眼花缭乱。首先我们可以定义交换算符，在自旋轨道的二次量子化下，这样定义的交换算符为 $$P(i,j)&#x3D;1-(c_i^\dagger-c_j^\dagger)(c_i-c_j),$$ 满足关系式子： $$P_{i,j}c_i&#x3D;c_jP_{i,j}.$$ 对于交换的路径进行研究，我们可以得到 $$U_n&#x3D;P_{n,n-...</div></div></div></a><a class="pagination-related" href="/myblog/2026/07/25/07_%E8%B6%85%E5%AF%BC/" title="超导"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">超导</div></div><div class="info-2"><div class="info-item-1">人们将低温下直流电阻消失的现象称为超导电性，具有超导电性的材料称为超导体。知道20世纪80年代中期，人们发现了一系列超导体，但其转变温度$T_c$都没有突破30K大关，这些超导体被称为常规超导体，可以用BCS理论解释。直到1986年后，人们在多元的铜氧化合物中找到了一系列超过30K的超导体。 常规超导：BCS理论巴丁，库珀等人认为超导基态是电子按照库珀对分布的状态，在二者质心中，分别可以用$c_{k\uparrow}^\dagger,c_{-k\downarrow}^\dagger$表示。这听起来很合理吗？好像挺合理的是吧，$1&#x2F;2$自旋的粒子就一上一下这么配对了。但是在一个宏观大的超导体里面，两个电子凭什么就这么呆在一块不分离呢？这里就有两点：第一，配对是指动量空间配对，而实际空间上两个电子并不在一块(与BEC不同，这后面也会讲)；第二，在声子相互作用下，粒子之间会产生等效的吸引力。(这在Anderson的书中有精彩的论述，在凝聚态系统中，即使是repulsion或者散射也可能产生等效的吸引相互作用！)下面我们先看这种吸引相互作用是怎么来的： 首先粒子，声子系统的总哈...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CHY</div><div class="author-info-description">记录学习与思考</div><div class="site-data"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">非平衡态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BD%93%E7%B3%BB%E4%B8%8B%E7%9A%84%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81%EF%BC%9A%E4%BB%8E%E6%9C%97%E4%B9%8B%E4%B8%87%E6%96%B9%E7%A8%8B%E5%BC%80%E5%A7%8B"><span class="toc-number">1.1.</span> <span class="toc-text">经典体系下的非平衡态：从朗之万方程开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%9A%E7%A8%B3%E6%80%81%E7%9A%84%E5%8A%A8%E5%8A%9B%E5%AD%A6%EF%BC%9A%E5%BC%9B%E8%B1%AB%E8%BF%87%E7%A8%8B%E4%B8%8EFokker-Planck%E6%96%B9%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">亚稳态的动力学：弛豫过程与Fokker-Planck方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Keldysh%E7%90%86%E8%AE%BA"><span class="toc-number">1.3.</span> <span class="toc-text">Keldysh理论</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-08-29T16:00:00.000Z" title="发表于 2026-08-30 00:00:00">2026-08-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型">Bethe Ansatz方法求解一维海森堡自旋链模型</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统">相互作用电子系统</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By CHY</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog/js/utils.js?v=5.6.0"></script><script src="/myblog/js/main.js?v=5.6.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
+  }
+
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
+
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script src="/js/custom.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

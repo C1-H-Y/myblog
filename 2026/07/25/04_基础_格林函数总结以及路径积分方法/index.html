@@ -1,0 +1,677 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基础：格林函数总结以及路径积分方法 | Allen's personal blog</title><meta name="author" content="CHY"><meta name="copyright" content="CHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在凝聚态量子场论中，格林函数是十分重要的数学工具，在此总结一下需要用到的格林函数以及在路径积分表示下是怎么回事。 实时格林函数在物理系统中，格林函数被用来表示物理量之间的关联，实时格林函数是在零温下描述系统关于量子态的分配的平均值。 $$C(t_1,t_2)&#x3D;\langle A(t_1)B(t_2)\rangle$$ 基于因果律，有时我们要引入推迟（retarded）和超前（advanc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础：格林函数总结以及路径积分方法">
+<meta property="og:url" content="https://c1-h-y.github.io/myblog/2026/07/25/04_%E5%9F%BA%E7%A1%80_%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Allen&#39;s personal blog">
+<meta property="og:description" content="在凝聚态量子场论中，格林函数是十分重要的数学工具，在此总结一下需要用到的格林函数以及在路径积分表示下是怎么回事。 实时格林函数在物理系统中，格林函数被用来表示物理量之间的关联，实时格林函数是在零温下描述系统关于量子态的分配的平均值。 $$C(t_1,t_2)&#x3D;\langle A(t_1)B(t_2)\rangle$$ 基于因果律，有时我们要引入推迟（retarded）和超前（advanc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c1-h-y.github.io/myblog/img/chy.png">
+<meta property="article:published_time" content="2026-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-30T08:22:03.620Z">
+<meta property="article:author" content="CHY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c1-h-y.github.io/myblog/img/chy.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基础：格林函数总结以及路径积分方法",
+  "url": "https://c1-h-y.github.io/myblog/2026/07/25/04_%E5%9F%BA%E7%A1%80_%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95/",
+  "image": "https://c1-h-y.github.io/myblog/img/chy.png",
+  "datePublished": "2026-07-24T16:00:00.000Z",
+  "dateModified": "2026-08-30T08:22:03.620Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CHY",
+      "url": "https://c1-h-y.github.io/myblog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog/img/chy.png"><link rel="canonical" href="https://c1-h-y.github.io/myblog/2026/07/25/04_%E5%9F%BA%E7%A1%80_%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/myblog/css/index.css?v=5.6.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基础：格林函数总结以及路径积分方法',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #0a0a0a;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog/"><span class="site-name">Allen's personal blog</span></a><a class="nav-page-title" href="/myblog/"><span class="site-name">基础：格林函数总结以及路径积分方法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基础：格林函数总结以及路径积分方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-30T08:22:03.620Z" title="更新于 2026-08-30 16:22:03">2026-08-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>在凝聚态量子场论中，格林函数是十分重要的数学工具，在此总结一下需要用到的格林函数以及在路径积分表示下是怎么回事。</p>
+<h1 id="实时格林函数"><a href="#实时格林函数" class="headerlink" title="实时格林函数"></a>实时格林函数</h1><p>在物理系统中，格林函数被用来表示物理量之间的关联，实时格林函数是在零温下描述系统关于量子态的分配的平均值。</p>
+<p>$$<br>C(t_1,t_2)&#x3D;\langle A(t_1)B(t_2)\rangle<br>$$</p>
+<p>基于因果律，有时我们要引入推迟（retarded）和超前（advanced）格林函数的表达式为：</p>
+<p>$$<br>\begin{aligned}<br>\text{Greater: } &amp; G^{&gt;}(t_1,t_2) &#x3D; -\mathrm{i} \langle A(t_1)B(t_2) \rangle \<br>\text{Lesser: } &amp; G^{&lt;}(t_1,t_2) &#x3D; -\zeta \mathrm{i} \langle B(t_2)A(t_1) \rangle \<br>\text{Time-ordered: } &amp; G^{T}(t_1,t_2) &#x3D; -\mathrm{i} \langle \mathcal{T} A(t_1)B(t_2) \rangle &#x3D; -\mathrm{i} \begin{cases}<br>\langle A(t_1)B(t_2) \rangle, &amp; t_1 \geq t_2 \<br>\zeta \langle B(t_2)A(t_1) \rangle, &amp; t_1 &lt; t_2<br>\end{cases} \<br>&amp; &#x3D; \Theta(t_1 - t_2) G^{&gt;} + \Theta(t_2 - t_1) G^{&lt;} \<br>\text{Anti-time-ordered: } &amp; G^{\bar{T}}(t_1,t_2) &#x3D; -\mathrm{i} \langle \tilde{\mathcal{T}} A(t_1)B(t_2) \rangle &#x3D; -\mathrm{i} \begin{cases}<br>\langle A(t_1)B(t_2) \rangle, &amp; t_1 \leq t_2 \<br>\zeta \langle B(t_2)A(t_1) \rangle, &amp; t_1 &gt; t_2<br>\end{cases} \<br>&amp; &#x3D; \Theta(t_2 - t_1) G^{&gt;} + \Theta(t_1 - t_2) G^{&lt;} \<br>\text{Retarded: } &amp; G^{R}(t_1,t_2) &#x3D; -\mathrm{i} \Theta(t_1 - t_2) \langle [A(t_1),B(t_2)]_{\zeta} \rangle &#x3D; \Theta(t_1 - t_2) (G^{&gt;} - G^{&lt;}) \<br>\text{Advanced: } &amp; G^{A}(t_1,t_2) &#x3D; \mathrm{i} \Theta(t_2 - t_1) \langle [A(t_1),B(t_2)]_{\zeta} \rangle &#x3D; -\Theta(t_2 - t_1) (G^{&gt;} - G^{&lt;})<br>\end{aligned}<br>$$</p>
+<p>定义实际上并不是很难，但是我们为什么要这样定义呢？我们已经说到了格林函数在多体物理中代表系统面对外部扰动<br>时的响应核。假设二次量子化后的系统作用量可以写成如下形式：</p>
+<p>$$<br>S&#x3D;\sum_k \epsilon_ka_k^\dagger(t)a_k\equiv \omega(a^\dagger a+\frac{1}{2})<br>$$</p>
+<p>假定系统只有非简并的基态，在零温状态下系统必定完全处在基态，为了引入格林函数，定义生成函数为：</p>
+<p>$$<br>S&#x3D;\langle0| T\exp[-i\int_{-\tau}^{\tau}dt H_{int}(t)]|0\rangle<br>$$</p>
+<p>其中$H_{int}&#x3D;\bar{z}(t)a+a^\dagger z(t)$为外场的相互作用。下面我们来证明：</p>
+<p>$$<br>S&#x3D;\exp\left[-i\int_{-\tau}^{\tau}dt dt’\bar{z}(t)G^R(t-t’)z(t’)\right]<br>$$</p>
+<p>证明：将整个作用量拆分为一系列间距为$\Delta\tau$的小段，定义算符写为：$A_r&#x3D;-i\bar{z}(t_r)a(t_r)\Delta\tau$（注：原稿中$b(t)$应为$a(t)$），相应的生成函数就可以写为：</p>
+<p>$$<br>S_N&#x3D;e^{A_N-A_N^\dagger}\dots e^{A_r-A_r^\dagger}\dots e^{A_1-A_1^\dagger}<br>$$</p>
+<p>利用e指数的恒等式：$e^{A+B}&#x3D;e^{B}e^Ae^{[A,B]&#x2F;2}$，将所有的指数项全部拆开：</p>
+<p>$$<br>\begin{aligned}<br>S_N&amp;&#x3D;e^{-A_N^\dagger}e^{A_N}\dots e^{-A_1^\dagger}e^{A_1}\exp\left[-\frac{1}{2}\sum_r[A_r,A_r^\dagger]\right]  \<br>    &amp;&#x3D;e^{-\sum_r A_r^\dagger}e^{\sum_r A_r}\exp\left[-\sum_{r\geq s}[A_r,A_s^\dagger]\left(1-\frac{1}{2}\delta_{rs}\right)\right]<br>\end{aligned}<br>$$</p>
+<p>这里求和指标为$r \geq s$（对应时间顺序$t_r \geq t_s$），因为将所有$A_r$移到右侧、$A_s^\dagger$移到左侧时，只有算符时间次序交叉时才会产生非对易交换项。下面计算对易子：</p>
+<p>$$<br>\begin{aligned}<br>[A_r, A_s^\dagger] &amp;&#x3D; [-i\bar{z}(t_r)a(t_r)\Delta\tau, i a^\dagger(t_s) z(t_s)\Delta\tau]  \<br>    &amp;&#x3D; \bar{z}(t_r)z(t_s) [a(t_r), a^\dagger(t_s)] (\Delta\tau)^2<br>\end{aligned}<br>$$</p>
+<p>根据推迟格林函数的定义，对于自由场有$G(t-t’) &#x3D; -i\theta(t-t’) [a(t), a^\dagger(t’)]$（此处对易子为C数），即当$t_r &gt; t_s$时，$[a(t_r), a^\dagger(t_s)] &#x3D; i G^R(t_r-t_s)$。代入回指数项中：</p>
+<p>$$<br>\begin{aligned}<br>&amp;-\sum_{r\geq s} \bar{z}(t_r)z(t_s) [a(t_r), a^\dagger(t_s)] \left(1-\frac{1}{2}\delta_{rs}\right) (\Delta\tau)^2  \<br>    &amp;&#x3D; -i\sum_{r\geq s} \bar{z}(t_r) G^R(t_r-t_s) z(t_s) \left(1-\frac{1}{2}\delta_{rs}\right) (\Delta\tau)^2<br>\end{aligned}<br>$$</p>
+<p>取连续极限$\Delta\tau \to 0$，离散求和转化为积分，且对角项$\delta_{rs}$在积分测度下贡献为零（即因子$(1-\frac{1}{2}\delta_{rs}) \to 1$），求和范围$r \geq s$等价于阶跃函数$\theta(t-t’)$：</p>
+<p>$$<br>\begin{aligned}<br>&amp;-i \int_{-\tau}^{\tau} dt \int_{-\tau}^{\tau} dt’ \bar{z}(t) G^R(t-t’) z(t’) \theta(t-t’)  \<br>    &amp;&#x3D; -i \int_{-\tau}^{\tau} dt \int_{-\tau}^{\tau} dt’ \bar{z}(t) G^R(t-t’) z(t’)<br>\end{aligned}<br>$$</p>
+<p>另一方面，对于生成函数（真空期望值），由于$A_r \propto a$是湮灭算符，$A_r^\dagger \propto a^\dagger$是产生算符，故算符部分作用到真空态上有$e^{\sum_r A_r}|0\rangle &#x3D; |0\rangle$且$\langle 0|e^{-\sum_r A_r^\dagger} &#x3D; \langle 0|$，其期望值为1。因此只保留指数上的C数部分：</p>
+<p>$$<br>S &#x3D; \exp\left[-i\int_{-\tau}^{\tau}dt dt’\bar{z}(t)G(t-t’)z(t’)\right]<br>$$</p>
+<p>这里我们可以看出推迟函数的重要性，其物理来源就是时间演化算符的编时性。在相互作用表象下，时间演化算符写为：</p>
+<p>$$<br>U(t,t’)&#x3D;\mathcal{T}e^{-\int_{t}^{t’}H_{int}(t_1)dt_1}<br>$$</p>
+<p>对生成函数求偏导可以得到：</p>
+<p>$$<br>-i\mathcal{T}\langle a(t)a^\dagger(t’)\rangle&#x3D;\frac{\delta^2lnS}{\delta \bar{z}(t)\delta z(t’)}&#x3D;G^T(t-t’)<br>$$</p>
+<p>但为什么我说这是推迟格林函数？因为我刚才搞错了。。。<br>Anyway,反正现在进一步，对于n个产生湮灭算符，我们相应的可以得到n点产生湮灭算符：</p>
+<p>$$<br>G(1,2,\dots n;1’,2’,\dots n’)&#x3D;\langle0|a(t_1)a(t_2)\dots a(t_{n-1})^\dagger a(t_{n})^\dagger|0\rangle<br>$$</p>
+<p>对于两个算符$G(t-t’)&#x3D;\langle A(t)B(t’)\rangle$二点关联函数的谱函数表示为：</p>
+<p>$$<br>G(\omega)&#x3D;-i\int\sum_n\langle0|e^{i\omega(t-t’)}A(t)|n\rangle\langle n|B(t’)|0\rangle d(t-t’)<br>$$</p>
+<p>显然，对于不同的格林函数内容，我们也要相应的改变傅里叶变换的形式。对于推迟，超前，编时格林函数分别计算得到：</p>
+<p>$$<br>\begin{aligned}<br>G^R(\omega)&amp;&#x3D;-i\int\sum_n\theta(t-t’)\langle0|e^{i\omega(t-t’)}[A(t)|n\rangle,\langle n|B(t’)]|0\rangle d(t-t’) \<br>            &amp;&#x3D;\sum_n\frac{A_{0n}B_{n0}}{\omega+i\eta+\omega_0-\omega_n}\pm\frac{B_{0n}A_{n0}}{\omega+i\eta-\omega_0+\omega_n}<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>G^A(\omega)&amp;&#x3D;i\int\sum_n\theta(-t+t’)\langle0|e^{i\omega(t-t’)}[A(t)|n\rangle,\langle n|B(t’)]|0\rangle d(t-t’) \<br>            &amp;&#x3D;\sum_n\frac{A_{0n}B_{n0}}{\omega-i\eta+\omega_0-\omega_n}\pm\frac{B_{0n}A_{n0}}{\omega-i\eta-\omega_0+\omega_n}<br>\end{aligned}<br>$$</p>
+<p>其中$\omega_n &#x3D; E_n - E_0$为激发能，$\eta \to 0^+$为正无穷小量，正负号分别对应玻色子（对易子）和费米子（反对易子）。</p>
+<p>观察$G^R$与$G^A$的表达式，利用恒等式$\frac{1}{x\pm i\eta} &#x3D; \mathcal{P}\frac{1}{x} \mp i\pi\delta(x)$，我们可以提取出它们的虚部。为此，定义<strong>谱函数</strong>（Spectral Function）$A(\omega)$：</p>
+<p>$$<br>A(\omega) \equiv i\left[G^R(\omega) - G^A(\omega)\right] &#x3D; 2\pi \sum_n \left[ A_{0n}B_{n0}\delta(\omega-\omega_n) \mp B_{0n}A_{n0}\delta(\omega+\omega_n) \right]<br>$$</p>
+<p>谱函数$A(\omega)$包含了系统所有的激发能谱信息，且满足归一化条件（求和规则）$\int_{-\infty}^{\infty} \frac{d\omega}{2\pi} A(\omega) &#x3D; \langle[A,B]_{\mp}\rangle$。物理上，对于$B&#x3D;A^\dagger$的情况，$A(\omega)$直接正比于系统的态密度。</p>
+<p>利用谱函数，推迟与超前格林函数可以统一写为<strong>谱表示</strong>（Lehmann谱表示）的积分形式：</p>
+<p>$$<br>G^{R&#x2F;A}(\omega) &#x3D; \int_{-\infty}^{\infty} \frac{d\omega’}{2\pi} \frac{A(\omega’)}{\omega - \omega’ \pm i\eta}<br>$$</p>
+<p>这表明$G^R$和$G^A$并非独立，它们由同一个实函数$A(\omega)$完全决定，实部与虚部之间通过Kramers-Kronig色散关系相联系。</p>
+<p>为了将理论推广到有限温度，我们需要引入<strong>谱定理</strong>（Fluctuation-Dissipation Theorem，涨落-耗散定理的量子形式）。定义大于格林函数$G^&gt;$和小于格林函数$G^&lt;$：</p>
+<p>$$<br>\begin{aligned}<br>G^&gt;(t-t’) &amp;&#x3D; -i \langle A(t)B(t’) \rangle \<br>    G^&lt;(t-t’) &amp;&#x3D; -i \langle B(t’)A(t) \rangle<br>\end{aligned}<br>$$</p>
+<p>显然，$G^R &#x3D; \theta(t-t’)(G^&gt; - G^&lt;)$，$G^A &#x3D; -\theta(t’-t)(G^&gt; - G^&lt;)$。在有限温度下，系综平均涉及玻尔兹曼因子$e^{-\beta E_n}&#x2F;Z$，经过傅里叶变换可以证明，$G^&gt;$和$G^&lt;$与谱函数$A(\omega)$通过统计分布函数直接关联，这就是<strong>谱定理</strong>：</p>
+<p>$$<br>\begin{aligned}<br>G^&lt;(\omega) &amp;&#x3D; \mp i A(\omega) f_{\mp}(\omega) \<br>    G^&gt;(\omega) &amp;&#x3D; -i A(\omega) \left[1 \pm f_{\mp}(\omega)\right]<br>\end{aligned}<br>$$</p>
+<p>其中$f_{-}(\omega) &#x3D; \frac{1}{e^{\beta\omega}+1}$为费米-狄拉克分布，$f_{+}(\omega) &#x3D; \frac{1}{e^{\beta\omega}-1}$为玻色-爱因斯坦分布，上符号对应费米子，下符号对应玻色子。</p>
+<p>谱定理深刻地揭示了：系统的耗散性质（由$G^R&#x2F;G^A$描述，体现对外场的响应）与系统的自发涨落（由$G^&gt;&#x2F;G^&lt;$描述，体现关联）是由同一个谱函数$A(\omega)$并通过热力学统计规律紧密绑定在一起的。在零温极限下，$f_{\mp}(\omega) \to 0$，退化为之前的基态结果。</p>
+<p>我们也可以在费曼图中表示格林函数：<br>为了之后在有限温度下的表示方便，单点格林函数可以表示为：</p>
+<p>$$<br>G_{\lambda\lambda’}&#x3D;-i\langle\phi|T\psi_\lambda(t)\psi_{\lambda’}^\dagger(t’)|\phi\rangle<br>$$</p>
+<p>其中$|\phi\rangle$在零温下为多体系统的基态。$\psi_\lambda(t)$为海森堡表示下的场：</p>
+<p>$$<br>T\psi_\lambda(t)\psi_{\lambda’}^\dagger(t’)&#x3D;\begin{cases}<br>        \psi_\lambda(t)\psi_{\lambda’}^\dagger(t’)&amp;(t&gt;t’)\<br>        \pm\psi_{\lambda’}^\dagger(t’)\psi_\lambda(t)&amp;(t&lt;t’)<br>    \end{cases}<br>$$</p>
+<p>其中正负分别对应玻色子和费米子。</p>
+<p>在费曼图微扰论中，我们需要将格林函数在坐标表象与动量表象下分别写出具体表达式。为了书写简便，引入组合记号 $1 \equiv (\mathbf{r}_1, t_1, \lambda_1)$，$2 \equiv (\mathbf{r}_2, t_2, \lambda_2)$。</p>
+<p><strong>1. 坐标表象（实空间-时间表象）</strong></p>
+<p>在坐标表象下，单粒子格林函数写为：</p>
+<p>$$<br>G(1, 2) &#x3D; -i \langle \phi | T \psi(1) \psi^\dagger(2) | \phi \rangle &#x3D; -i \langle \phi | T \psi_{\lambda_1}(\mathbf{r}<em>1, t_1) \psi</em>{\lambda_2}^\dagger(\mathbf{r}_2, t_2) | \phi \rangle<br>$$</p>
+<p>根据编时算符的定义，将其按时间大小展开：</p>
+<p>$$<br>G(1, 2) &#x3D; \begin{cases}<br>        -i \langle \phi | \psi_{\lambda_1}(\mathbf{r}<em>1, t_1) \psi</em>{\lambda_2}^\dagger(\mathbf{r}<em>2, t_2) | \phi \rangle &amp; (t_1 &gt; t_2) \<br>        \mp i \langle \phi | \psi</em>{\lambda_2}^\dagger(\mathbf{r}<em>2, t_2) \psi</em>{\lambda_1}(\mathbf{r}_1, t_1) | \phi \rangle &amp; (t_1 &lt; t_2)<br>    \end{cases}<br>$$</p>
+<p>$t_1 &gt; t_2$ 时表示在 $t_2$ 产生一个粒子并在 $t_1$ 湮灭（粒子传播）；$t_1 &lt; t_2$ 时表示在 $t_1$ 产生一个空穴并在 $t_2$ 湮灭（空穴传播）。在费曼图中，用一条从点 $2$ 指向点 $1$ 的带箭头实线表示：</p>
+<div align="center">
+
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">        <span class="keyword">\draw</span>[thick, -&gt;] (0,0) node[left] &#123;<span class="built_in">$</span>2<span class="built_in">$</span>&#125; -- (2,0) node[right] &#123;<span class="built_in">$</span>1<span class="built_in">$</span>&#125;;</span><br><span class="line">        <span class="keyword">\node</span> at (1, 0.3) &#123;<span class="built_in">$</span>G(1,2)<span class="built_in">$</span>&#125;;</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br></pre></td></tr></table></figure>
+
+</div>
+
+<p><strong>2. 动量表象（动量-频率表象）</strong></p>
+<p>对于具有空间平移不变性的系统，$G$ 仅依赖于坐标差和时间差。利用场算符的傅里叶展开 $\psi_{\lambda}(\mathbf{r}, t) &#x3D; \frac{1}{\sqrt{V}}\sum_{\mathbf{k}} e^{i\mathbf{k}\cdot\mathbf{r}} c_{\mathbf{k}\lambda}(t)$，代入坐标表象并对空间坐标积分，可得到动量-时间表象下的形式：</p>
+<p>$$<br>G_{\lambda\lambda’}(\mathbf{k}, t_1, t_2) &#x3D; -i \langle \phi | T c_{\mathbf{k}\lambda}(t_1) c_{\mathbf{k}\lambda’}^\dagger(t_2) | \phi \rangle<br>$$</p>
+<p>进一步对时间差做傅里叶变换 $\int_{-\infty}^{\infty} d(t_1-t_2) e^{i\omega(t_1-t_2)}$，得到动量-频率表象下的格林函数。特别地，对于<strong>无相互作用的自由系统</strong>，零温下其精确表达式为（取 $\lambda&#x3D;\lambda’$）：</p>
+<p>$$<br>G_0(\mathbf{k}, \omega) &#x3D; \frac{1}{\omega - \varepsilon_{\mathbf{k}} + i\eta ,\text{sgn}(\varepsilon_{\mathbf{k}}-\mu)} &#x3D; \frac{\theta(\varepsilon_{\mathbf{k}}-\mu)}{\omega - \varepsilon_{\mathbf{k}} + i\eta} + \frac{\theta(\mu-\varepsilon_{\mathbf{k}})}{\omega - \varepsilon_{\mathbf{k}} - i\eta}<br>$$</p>
+<p>其中$\varepsilon_{\mathbf{k}}$为单粒子能量，$\mu$为化学势，$\eta \to 0^+$。该极点结构清晰地表明：对于费米面以上（$\varepsilon_{\mathbf{k}}&gt;\mu$）的态，极点在下半平面，对应推迟传播（粒子）；对于费米面以下（$\varepsilon_{\mathbf{k}}&lt;\mu$）的态，极点在上半平面，对应超前传播（空穴）。</p>
+<p>对于包含相互作用的<strong>全格林函数</strong> $G(\mathbf{k},\omega)$，则可通过莱曼表示写成谱函数积分的形式：</p>
+<p>$$<br>G(\mathbf{k}, \omega) &#x3D; \int_{-\infty}^{\infty} \frac{d\omega’}{2\pi} \frac{A(\mathbf{k}, \omega’)}{\omega - \omega’ + i\eta ,\text{sgn}(\omega’-\mu)}<br>$$</p>
+<p>在动量表象的费曼图中，自由传播子 $G_0$ 用细实线表示，全传播子 $G$ 用粗实线表示，线上标记守恒的动量 $\mathbf{k}$ 与频率 $\omega$：</p>
+<div align="center">
+
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">        <span class="keyword">\draw</span>[thick, -&gt;] (0,0) -- (2,0);</span><br><span class="line">        <span class="keyword">\node</span> at (1, 0.4) &#123;<span class="built_in">$</span><span class="keyword">\mathbf</span>&#123;k&#125;, <span class="keyword">\omega</span><span class="built_in">$</span>&#125;;</span><br><span class="line">        <span class="keyword">\node</span> at (1, -0.4) &#123;<span class="built_in">$</span>G<span class="built_in">_</span>0(<span class="keyword">\mathbf</span>&#123;k&#125;, <span class="keyword">\omega</span>)<span class="built_in">$</span>&#125;;</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br><span class="line">    <span class="keyword">\quad</span></span><br><span class="line">    <span class="keyword">\begin</span>&#123;tikzpicture&#125;</span><br><span class="line">        <span class="keyword">\draw</span>[very thick, -&gt;] (0,0) -- (2,0);</span><br><span class="line">        <span class="keyword">\node</span> at (1, 0.4) &#123;<span class="built_in">$</span><span class="keyword">\mathbf</span>&#123;k&#125;, <span class="keyword">\omega</span><span class="built_in">$</span>&#125;;</span><br><span class="line">        <span class="keyword">\node</span> at (1, -0.4) &#123;<span class="built_in">$</span>G(<span class="keyword">\mathbf</span>&#123;k&#125;, <span class="keyword">\omega</span>)<span class="built_in">$</span>&#125;;</span><br><span class="line">    <span class="keyword">\end</span>&#123;tikzpicture&#125;</span><br></pre></td></tr></table></figure>
+
+</div>
+
+<h1 id="虚时格林函数"><a href="#虚时格林函数" class="headerlink" title="虚时格林函数"></a>虚时格林函数</h1><p>虚时格林函数难度上没有什么很大差别，我认为就是做了Wick转动的Floquet理论（好吧这里我也没说Floquet理论是什么），总之是将奇点从实轴搬到了<br>虚轴，利用留数定理以及傅里叶变换对频率解析延拓的一种手段，用于描述有限温度情形下的配分函数。而且我现在发现这个虚时看起来跟时间演化差不多，<br>但本质上完全不一样，只是说一方面哈密顿量可以解析延拓，另一方面搞了一个$\beta H$的取平均的样子，使得数学上可以这么处理罢了。<br>在有限温度下，物理量的平均值写为：</p>
+<p>$$<br>\langle \mathcal{O}\rangle&#x3D;\sum_m\langle m|e^{-\beta E_m}\mathcal{O}|m\rangle&#x3D;\text{\Tr}[\rho\mathcal{O}]<br>$$</p>
+<p>其中$\rho&#x3D;e^{\int_{0}^{\beta}H(i\tau)d\tau}$，其中$\tau&#x3D;it$为虚时。</p>
+<p>格林函数在有限温度的情况下，可以写为不同能级下的平均值：</p>
+<p>$$<br>G_{\lambda\lambda’}(\tau-\tau’)&#x3D;-\langle T\psi_{\lambda}(\tau)\psi_{\lambda’}^\dagger(\tau’)\rangle&#x3D;-\text{\Tr}[e^{-\beta(H-F)}\psi_{\lambda}(\tau)\psi_{\lambda’}^\dagger(\tau’)]<br>$$</p>
+<p>在时间平移不变性的要求下，格林函数是$\tau-\tau’$的函数，写为$G_{\tau-\tau’}$，注意到：</p>
+<p>$$<br>\begin{aligned}<br>G_{\lambda\lambda’}(\tau)&amp;&#x3D;\zeta\text{\Tr}[e^{\tau H}\psi_\lambda e^{-\tau H}e^{-\beta(H-F)}\psi_{\lambda’}^\dagger]\<br>&amp;&#x3D;\zeta\text{\Tr}[e^{\beta F}\psi_{\lambda’}^\dagger e^{\tau H}\psi_\lambda e^{-(\tau+\beta) H}]\<br>&amp;&#x3D;\zeta\text{\Tr}[e^{\beta F}\psi_{\lambda’}^\dagger \psi_\lambda(\tau+\beta)]\<br>&amp;&#x3D;\zeta G_{\lambda\lambda’}(\tau+\beta)<br>\end{aligned}<br>$$</p>
+<p>其中$\psi_\lambda$可以是费米子或者玻色子。这种平移对称性让我们想到可以做虚时上的傅里叶变换：</p>
+<p>$$<br>G_\lambda(\tau)&#x3D;\begin{cases}<br>        T\sum_nG_{\lambda\lambda’}(i\nu_n)e^{-i\nu_n\tau}&amp;\text{bosons}\<br>        T\sum_nG_{\lambda\lambda’}(i\omega_n)e^{-i\omega_n\tau}&amp;\text{fermions}<br>    \end{cases}<br>$$</p>
+<p>例如，对自由费米子与玻色子，哈密顿量$H&#x3D;\sum_\lambda\psi_\lambda^\dagger\psi_\lambda$的格林函数为：$G(i\omega_n)&#x3D;\frac{1}{i\omega_n-\epsilon_\lambda}$</p>
+<p>重要的公式：</p>
+<p>$$<br>\pm\frac{1}{2\pi i}\int_{0}^{\infty}f(z)n_{B&#x2F;F}(z)dz&#x3D;\frac{1}{\beta}\sum_n f(i\omega_n)<br>$$</p>
+<p>其中当为费米分布时，$\omega_n&#x3D;\frac{(2n+1)\pi}{\beta}$，当为玻色分布时，$\omega_n&#x3D;\frac{2n\pi}{\beta}$，证明就考虑一个上半部分的积分围道就可以了，如图所示：</p>
+<div align="center">
+  <img src="/myblog/images/4.23.png" width="600" alt="4.23.png"/>
+
+</div>
+
+<p>例如，对于费米子系统，假设其化学势为$\mu$，哈密顿量可以写为：$H&#x3D;\sum_\lambda\epsilon_\lambda\psi_{\lambda}^\dagger\psi_\lambda$，由于自由能<br>满足$-\frac{\partial F}{\partial\mu}&#x3D;N(\mu)$，于是：</p>
+<p>$$<br>\begin{aligned}<br>F&amp;&#x3D;-\int N(\mu)d\mu&#x3D;-T\sum_n\int_{0}^{\mu} d\mu \frac{e^{i\omega_n0^+}}{i\omega_n-E_\lambda+\mu}\<br>      &amp;&#x3D;T\sum_n ln(-\mu+E_\lambda-i\omega_n)+C(T)\<br>            &amp;&#x3D;-T\sum_n \ln[-G_\lambda(i\omega_n)^{-1}]<br>\end{aligned}<br>$$</p>
+<p>运用积分公式，相应的：</p>
+<p>$$<br>F&#x3D;\sum_\lambda\int_P\frac{dz}{2\pi i}f(z)\ln[\epsilon_\lambda-z]e^{z0^+}+C(T)<br>$$</p>
+<p>将积分路径转到实轴，沿着割线积分，贴着割线我们定义上下岸一个辐角为0，另一个就为$2\pi$，所以：</p>
+<p>$$<br>F&#x3D;-\sum_\lambda\int_{\epsilon_\lambda}^{\infty}d\omega f(\omega)+C(T)&#x3D;\sum_\lambda-Tln(1+e^{-\beta\epsilon_\lambda})+C(T)<br>$$</p>
+<p>有限温度下的费曼规则（松原形式）基于虚时路径积分与维克定理。在动量-频率表象下，规则如下：</p>
+<p><strong>1. 传播子（自由格林函数）</strong></p>
+<ul>
+<li><p><strong>费米子传播子</strong>：频率取费米松原频率 $\omega_n &#x3D; (2n+1)\pi T$，动量 $\mathbf{k}$。</p>
+<p>$$<br>G_0(\mathbf{k}, i\omega_n) &#x3D; \frac{1}{i\omega_n - \xi_{\mathbf{k}}} \quad \longleftrightarrow \quad \text{带箭头的实线}<br>$$</p>
+<pre><code>其中 $\xi_&#123;\mathbf&#123;k&#125;&#125; = \epsilon_&#123;\mathbf&#123;k&#125;&#125; - \mu$ 为单粒子能量扣除化学势。
+</code></pre>
+</li>
+<li><p><strong>玻色子传播子</strong>：频率取玻色松原频率 $\nu_m &#x3D; 2m\pi T$，动量 $\mathbf{q}$。</p>
+<p>$$<br>D_0(\mathbf{q}, i\nu_m) &#x3D; \frac{1}{\nu_m^2 + \omega_{\mathbf{q}}^2} \quad \text{(相对论性)} \quad \text{或} \quad \frac{1}{i\nu_m - \xi_{\mathbf{q}}} \quad \text{(非相对论性)} \quad \longleftrightarrow \quad \text{波浪线或虚线}<br>$$</p>
+</li>
+<li><p><strong>瞬时相互作用线</strong>（如库仑相互作用 $V(\mathbf{q})$）：</p>
+<p>$$<br>-V(\mathbf{q}) \quad \longleftrightarrow \quad \text{虚线（不带箭头）}<br>$$</p>
+</li>
+</ul>
+<p><strong>2. 顶点与守恒律</strong></p>
+<ul>
+<li><p><strong>相互作用顶点</strong>：对应于相互作用哈密顿量 $H_{int}$ 中的项。对于 $g \phi^4$ 或 $g \psi^\dagger \psi \phi$ 等相互作用，顶点因子为 $-g$（负号来源于 $e^{-\int d\tau H_{int}}$ 的展开）。</p>
+</li>
+<li><p><strong>动量与频率守恒</strong>：在每个顶点处，流入的动量之和等于流出的动量之和；流入的松原频率之和等于流出的松原频率之和。这会引入一个守恒约束：</p>
+<p>$$<br>(2\pi)^3 \delta(\sum \mathbf{k}) \cdot \beta \delta_{\sum \omega_n, 0}<br>$$</p>
+<pre><code>注意：费米子频率奇数，玻色子频率偶数，守恒时需满足频率的奇偶性相消。
+</code></pre>
+</li>
+</ul>
+<p><strong>3. 内线求和与积分</strong><br>对于每一条内线（未被外线固定的动量和频率），必须对其进行求和与积分：</p>
+<p>$$<br>\sum_{\text{内线}} \longrightarrow T \sum_{n} \int \frac{d^3k}{(2\pi)^3}<br>$$</p>
+<p>其中 $T$ 为温度，求和遍及该内线对应的松原频率（费米子取半整数，玻色子取整数）。</p>
+<p><strong>4. 符号与简并因子</strong></p>
+<ul>
+<li><strong>费米子圈</strong>：每一个闭合的费米子圈，需额外乘以因子 $-1$。</li>
+<li><strong>对称因子</strong>：对于具有对称操作的图，需除以对称因子 $S$（与零温规则相同）。</li>
+<li><strong>收敛因子</strong>：在处理非解析函数（如阶跃函数）或推导谱表示时，频率求和需引入收敛因子 $e^{i\omega_n 0^+}$。</li>
+</ul>
+<p><strong>5. 热力学势（自由能）的费曼规则</strong><br>若需计算有限温度下的热力学势 $\Omega &#x3D; -T \ln Z$，费曼规则有如下简化：</p>
+<ul>
+<li><p>只需考虑<strong>真空图</strong>（无外线的连通图）。</p>
+</li>
+<li><p>图的值等于所有内线求和积分之积，乘以顶点因子及符号因子。</p>
+</li>
+<li><p>热力学势的修正由所有不等价的连通真空图 $V_i$ 贡献：</p>
+<p>$$<br>\Omega &#x3D; \Omega_0 + \sum_{\text{真空图 } i} \frac{T \cdot V_i}{S_i}<br>$$</p>
+<pre><code>其中 $\Omega_0$ 为自由气体的热力学势，$S_i$ 为该真空图的对称因子。注意最前面的 $T$ 来源于 $\Omega = -T \ln Z$。
+</code></pre>
+</li>
+</ul>
+<p>谱定理：与上一节的区别仅仅在于多乘以了一个$e^{-\beta E_n}$的系数，由此也可以推出涨落耗散定理，此处从略。</p>
+<h1 id="路径积分表示"><a href="#路径积分表示" class="headerlink" title="路径积分表示"></a>路径积分表示</h1><p>费曼图就是建立在路径积分的基础上的，所以写一下路径积分下的凝聚态场论显然也是自然的。考虑单个粒子的路径，从初态 $|x_i\rangle$ 到末态 $|x_f\rangle$，时间演化算符的矩阵元可以表示为：</p>
+<p>$$<br>K(x_f, t_f; x_i, t_i) &#x3D; \langle x_f | e^{-i\hat{H}(t_f-t_i)&#x2F;\hbar} | x_i \rangle<br>$$</p>
+<p>整个路径在时间上可以被分成 $N$ 段（设 $\epsilon &#x3D; (t_f-t_i)&#x2F;N$），将这 $N$ 段利用坐标表象的完备性条件 $\int dx |x\rangle\langle x| &#x3D; 1$ 插入，就变成：</p>
+<p>$$<br>\lim_{N\to\infty} \int \prod_{n&#x3D;1}^{N-1} dx_n \langle x_f | e^{-i\hat{H}\epsilon&#x2F;\hbar} | x_{N-1} \rangle \cdots \langle x_2 | e^{-i\hat{H}\epsilon&#x2F;\hbar} | x_1 \rangle \langle x_1 | e^{-i\hat{H}\epsilon&#x2F;\hbar} | x_i \rangle<br>$$</p>
+<p>为了计算无穷小时间演化矩阵元，再插入动量完备基 $\int \frac{dp}{2\pi\hbar} |p\rangle\langle p| &#x3D; 1$，并利用 $\langle x|p\rangle &#x3D; e^{ipx&#x2F;\hbar}$。对于标准哈密顿量 $\hat{H} &#x3D; \frac{\hat{p}^2}{2m} + V(\hat{x})$，完成对动量 $p$ 的高斯积分后，由上述形式，我们发现可以定义拉格朗日量 $L(x, \dot{x}) &#x3D; \frac{1}{2}m\dot{x}^2 - V(x)$ 与作用量 $S &#x3D; \int dt L$，使用拉格朗日量作用量就可以得到路径积分的核心表达：</p>
+<p>$$<br>K &#x3D; \int \mathcal{D}x \exp\left{ \frac{i}{\hbar} \int_{t_i}^{t_f} dt L(x, \dot{x}) \right} &#x3D; \int \mathcal{D}x e^{iS[x]&#x2F;\hbar}<br>$$</p>
+<p>这里最关键的是路径积分测度 $\mathcal{D}x$ 的严格定义。它并非简单的 $\prod_n dx_n$，而是包含了由动量积分带来的归一化因子：</p>
+<p>$$<br>\mathcal{D}x \equiv \lim_{N\to\infty} \left( \frac{m}{2\pi i \hbar \epsilon} \right)^{N&#x2F;2} \prod_{n&#x3D;1}^{N-1} dx_n<br>$$</p>
+<p>在场论中，若将空间也离散化，测度推广为泛函测度 $\mathcal{D}\psi \sim \prod_{x,t} d\psi(x,t)$（包含相应的归一化因子）。</p>
+<p>高斯积分是重要的，在凝聚态场论中（通常威克转动到虚时 $\tau &#x3D; it$，此时指数带负号），由于场的类型不同，常用到的高斯积分形式有三种严格结果。令 $A$ 为正定矩阵：</p>
+<p><strong>1. 实数标量场（如声子场）：</strong></p>
+<p>$$<br>\int \prod_{i&#x3D;1}^N \frac{dx_i}{\sqrt{2\pi}} \exp\left( -\frac{1}{2} \sum_{i,j} x_i A_{ij} x_j \right) &#x3D; \frac{1}{\sqrt{\det A}}<br>$$</p>
+<p><strong>2. 复数场（如玻色子相干态）：</strong></p>
+<p>$$<br>\int \prod_{i&#x3D;1}^N \frac{d\bar{z}<em>i dz_i}{2\pi i} \exp\left( -\sum</em>{i,j} \bar{z}<em>i A</em>{ij} z_j \right) &#x3D; \frac{1}{\det A}<br>$$</p>
+<p>其中测度定义保证 $\int \frac{d\bar{z}dz}{2\pi i} e^{-\bar{z}z} &#x3D; 1$。</p>
+<p><strong>3. Grassmann场（费米子相干态）：</strong></p>
+<p>$$<br>\int \prod_{i&#x3D;1}^N d\bar{\eta}<em>i d\eta_i \exp\left( -\sum</em>{i,j} \bar{\eta}<em>i A</em>{ij} \eta_j \right) &#x3D; \det A<br>$$</p>
+<p>注意费米子积分没有 $2\pi i$ 归一化因子，且行列式 $\det A$ 出现在分子上。</p>
+<p>在二次量子化的形式下，为了处理多体粒子数可变的系统，我们需要使用相干态（Coherent states）来构造路径积分。对于涉及超导或共振态（如Andreev束缚态、Majorana零能模）的体系，<br>由于粒子数不守恒，我们需要将产生和湮灭算符组合成Nambu旋量$\Psi &#x3D; (\psi, \psi^\dagger)^T$。共振态的路径积分（虚时形式）写为：</p>
+<p>$$<br>Z &#x3D; \int \mathcal{D}[\bar{\Psi}, \Psi] \exp\left{ -\int_0^\beta d\tau \left[ \bar{\Psi} \partial_\tau \Psi + \mathcal{H}_{\text{BdG}}(\bar{\Psi}, \Psi) \right] \right}<br>$$</p>
+<p>其中$\mathcal{H}_{\text{BdG}}$为Bogoliubov-de Gennes哈密顿量密度，其在动量-频率表象下通常可以写成二次型形式：</p>
+<p>$$<br>S_E &#x3D; -\frac{1}{2} \sum_{\mathbf{k}, \omega_n} \Psi^\dagger(\mathbf{k}, i\omega_n) , \mathcal{G}^{-1}(\mathbf{k}, i\omega_n) , \Psi(\mathbf{k}, i\omega_n)<br>$$</p>
+<p>这里$\mathcal{G}^{-1}$是Nambu空间中的逆格林函数矩阵。利用前述的高斯积分公式，配分函数可以直接积分得到$Z &#x3D; \det(\mathcal{G}^{-1})^{-1&#x2F;2} &#x3D; \det(\mathcal{G})^{1&#x2F;2}$，从而将共振态的热力学性质与行列式直接联系起来。</p>
+<p>下面来正经研究路径积分和配分函数之间的关系，需要证明的公式为：</p>
+<p>$$<br>\begin{aligned}<br>Z&#x3D;\int \mathcal{D}[\bar{b},b]e^{-S}\<br>    S&#x3D;\int_{0}^{\beta}d\tau(\bar{b}\partial_\tau b+H[\bar{b},b])<br>\end{aligned}<br>$$</p>
+<p>从配分函数的定义$Z&#x3D;\text{\Tr}[e^{-\beta H}]$出发，共振态下的求迹为：</p>
+<p>$$<br>\begin{aligned}<br>\text{\Tr}[A]&amp;&#x3D;\sum_n\langle n|A|n\rangle&#x3D;\sum_{b_1,b,n}\langle n|b\rangle\langle\bar{b}|A|b_1\rangle\langle\bar{b}<em>1|n\rangle\<br>&amp;&#x3D;\sum</em>{b_1,b,n}\frac{(b^n\bar{b_1}^n)}{n!}\langle b|A|\bar{b}_1\rangle e^{-b\bar{b}-b_1\bar{b}<em>1}\<br>&amp;&#x3D;\sum</em>{b}\langle b|A|\bar{b}\rangle e^{-b\bar{b}}&#x3D;\int \frac{d\bar{b}db}{2\pi i}e^{-\bar{b}b}\langle \bar{b}|A|b\rangle<br>\end{aligned}<br>$$</p>
+<p>将积分路径切割为N个长度为$\Delta\tau$的片段，利用与之前类似的方法可以得到：</p>
+<p>$$<br>Z&#x3D;\int D[\bar{b},b]\exp[-\sum_{j&#x3D;1}^{N}(b_j-b_{j-1})\bar{b}_j+\Delta\tau H[\bar{b}<em>j,b</em>{j-1}]]+O(N\Delta\tau^2)<br>$$</p>
+<p>积分限在这里是重要的，对于玻色子来说$b_0&#x3D;b_N$，所以b关于$\beta$具有周期性。取$N\rightarrow\infty$的连续极限，作用量此处就可以写为：</p>
+<p>$$<br>Z&#x3D;\int D[\bar{b},b]\exp[-\int_{0}^{\beta}d\tau\bar{b}(\partial_\tau+\epsilon)b]<br>$$</p>
+<p>这里的积分定义其实不是很明确，所以我们还是要用Matsubara频率作变换，注意由于费米子的交换反对称性，$c_0&#x3D;-c_N$注意不要搞错了。对于<br>多个玻色子组成的系统$D(b,\bar{b})&#x3D;\prod_\alpha \frac{db_\lambda d\bar{b}_\lambda}{2\pi i}$。设傅里叶分量为：</p>
+<p>$$<br>b_\alpha(\tau)&#x3D;\frac{1}{\sqrt{\beta}}\sum_nb_\alpha(i\nu_n)e^{i\nu_n\tau}<br>$$</p>
+<p>配分函数可以表示为：</p>
+<p>$$<br>\begin{aligned}<br>Z&#x3D;\int D[\bar{b},b]\exp[-\sum_n\bar{b}<em>\alpha(-i\nu_n+\epsilon)b</em>\alpha]&#x3D;\frac{1}{\prod_n[-i\nu_n+\epsilon]}&#x3D;\frac{1}{\det[-G^{-1}]}<br>\end{aligned}<br>$$</p>
+<p>这个结果可以自然推广到费米子系统。作为一个例子，我们立马可以算出系统的自由能，定义为：</p>
+<p>$$<br>\begin{aligned}<br>F&amp;&#x3D;-\frac{1}{\beta}ln(Z)&#x3D;-\frac{1}{\beta}\sum_n \ln[-i\nu_n+\epsilon]\<br>&amp;&#x3D;-T\int\frac{dz}{2\pi i}f(z)ln(\epsilon_\lambda-z)e^{z0^+}\<br>&amp;&#x3D;-\int_{\epsilon}^{\infty}d\omega f(\omega)&#x3D;\mp T\ln[1\pm e^{-\beta\epsilon}]<br>\end{aligned}<br>$$</p>
+<p>分别对应于费米子和玻色子。</p>
+<p>路径积分求解系统的好处就是可以超越平均场理论，基于鞍点附近进行更高阶的微扰展开。其理论基础就是Hubbard-Stratonovich（HS）变换，HS变换主要是用来把相互作用项积分掉的方法，进而用来除去作用量中的费米子部分，使得整个理论玻色化。整个方法的核心就是用高斯积分来配凑相互作用项，将多体相互作用解耦为费米子与辅助场的线性耦合。我们从均匀电子气开始引入这个方法：</p>
+<p>均匀电子气中，电子之间通过库仑势相互作用，系统的哈密顿量可以写为</p>
+<p>$$<br>H &#x3D; \sum_{\mathbf{k}\sigma} \frac{\hbar^2 k^2}{2m} c^\dagger_{\mathbf{k}\sigma} c_{\mathbf{k}\sigma} + \frac{1}{2V} \sum_{\mathbf{q}\neq 0} \sum_{\mathbf{k}<em>1\sigma_1} \sum</em>{\mathbf{k}<em>2\sigma_2} V(\mathbf{q}) c^\dagger</em>{\mathbf{k}<em>1+\mathbf{q}\sigma_1} c^\dagger</em>{\mathbf{k}<em>2-\mathbf{q}\sigma_2} c</em>{\mathbf{k}<em>2\sigma_2} c</em>{\mathbf{k}_1\sigma_1},<br>$$</p>
+<p>其中库仑势 $V(\mathbf{q}) &#x3D; \frac{e^2}{\varepsilon_0 q^2}$。相互作用项是四费米子项，代表两个电子通过交换动量 $\mathbf{q}$ 发生散射。</p>
+<p>在路径积分表述中，我们的配分函数可以写成对费米子 Grassmann 场的泛函积分：</p>
+<p>$$<br>Z &#x3D; \int \mathcal{D}[\bar{\psi},\psi] e^{-S[\bar{\psi},\psi]}<br>$$</p>
+<p>其中欧几里得作用量为 $S &#x3D; \int_0^\beta d\tau \left( \bar{\psi}\partial_\tau \psi + H(\bar{\psi},\psi) \right)$。对于均匀电子气，相互作用项对应作用量中的</p>
+<p>$$<br>S_{\text{int}} &#x3D; \frac{1}{2V} \sum_{\mathbf{q}} V(\mathbf{q}) \rho(-\mathbf{q}) \rho(\mathbf{q}), \quad \rho(\mathbf{q}) &#x3D; \sum_{\mathbf{k}\sigma} \bar{\psi}<em>{\mathbf{k}+\mathbf{q}\sigma} \psi</em>{\mathbf{k}\sigma}.<br>$$</p>
+<p>这是密度密度相互作用，正好是辅助场的二次型形式。我们利用高斯积分等式：</p>
+<p>$$<br>\exp\left( \frac{1}{2} A \rho^2 \right) \propto \int D\phi \exp\left( -\frac{1}{2} A^{-1} \phi^2 + \phi \rho \right)<br>$$</p>
+<p>对库仑相互作用做HS分解，引入密度辅助场 $\phi(\mathbf{q})$，将配分函数改写为：</p>
+<p>$$<br>Z \propto \int \mathcal{D} \phi \int \mathcal{D}[\bar{\psi},\psi] \exp\left( -\frac{1}{2V} \sum_{\mathbf{q}} \frac{\phi(\mathbf{q})\phi(-\mathbf{q})}{V(\mathbf{q})} - \int d\tau \bar{\psi} ( \partial_\tau + \varepsilon_{\mathbf{k}} - \phi(\mathbf{q}) ) \psi \right).<br>$$</p>
+<p>这样我们就将原来的四费米子相互作用积分掉，得到了一个玻色辅助场 $\phi$ 与费米子线性耦合的理论，完成了理论的玻色化。</p>
+<p>接下来我们将这个方法推广到更简单的关联电子模型，也就是Hubbard模型，然后讨论超导的BCS模型。</p>
+<p>单带Hubbard模型是描述强关联电子最简单的模型，其哈密顿量为：</p>
+<p>$$<br>H_{\text{Hubbard}} &#x3D; -t \sum_{\langle ij \rangle \sigma} c^\dagger_{i\sigma} c_{j\sigma} + U \sum_i n_{i\uparrow} n_{i\downarrow}<br>$$</p>
+<p>其中 $n_{i\sigma} &#x3D; c^\dagger_{i\sigma} c_{i\sigma}$ 是局域密度算符，$U$ 是同格点的库仑排斥相互作用。我们可以把相互作用项改写为：</p>
+<p>$$<br>U n_{i\uparrow} n_{i\downarrow} &#x3D; \frac{U}{4} (n_{i\uparrow} + n_{i\downarrow})^2 - \frac{U}{4}(n_{i\uparrow} - n_{i\downarrow})^2 &#x3D; \frac{U}{4} n_i^2 - \frac{U}{4} m_i^2,<br>$$</p>
+<p>其中 $n_i &#x3D; n_{i\uparrow}+n_{i\downarrow}$ 是总密度，$m_i &#x3D; n_{i\uparrow}-n_{i\downarrow}$ 是局域自旋密度。我们可以对这两个二次型分别做HS分解，这里我们先考虑电荷通道的分解：</p>
+<p>引入电荷辅助场 $\phi_i$，利用高斯恒等式：</p>
+<p>$$<br>\exp\left( -\beta \frac{U}{4} \sum_i n_i^2 \right) &#x3D; \int \prod_i \left( C d\phi_i \right) \exp\left( -\sum_i \frac{\phi_i^2}{U} - \sum_i \phi_i n_i \right).<br>$$</p>
+<p>代入配分函数后，原来的相互作用项被替换为费米子与辅助场的线性耦合，相互作用四费米子项被消掉了，我们得到了作用量：</p>
+<p>$$<br>S &#x3D; \int_0^\beta d\tau \left[ \sum_{i\sigma} \bar{c}<em>{i\sigma} \partial</em>\tau c_{i\sigma} - t \sum_{\langle ij \rangle\sigma} \bar{c}<em>{i\sigma} c</em>{j\sigma} + \sum_i \frac{\phi_i^2}{U} + \sum_i \phi_i (\sum_\sigma \bar{c}<em>{i\sigma} c</em>{i\sigma}) \right].<br>$$</p>
+<p>现在我们对费米子部分积分可以得到有效作用量：</p>
+<p>$$<br>Z &#x3D; \int \mathcal{D}\phi e^{-S_{\text{eff}}[\phi]}, \quad S_{\text{eff}}[\phi] &#x3D; \int_0^\beta d\tau \sum_i \frac{\phi_i^2}{U} - \ln \det\left( \partial_\tau + H_0 + \phi(\tau) \right),<br>$$</p>
+<p>其中 $H_{0,ij\sigma} &#x3D; -t\delta_{\langle ij\rangle}$ 是跃迁项。</p>
+<p>如果考虑自旋密度通道的HS分解，我们引入自旋辅助场 $\mathbf{m}_i$，会得到类似的结果，解耦后的哈密顿量为：</p>
+<p>$$<br>H_{\text{HS, Hubbard}} &#x3D; -t \sum_{\langle ij \rangle \sigma} c^\dagger_{i\sigma} c_{j\sigma} + \sum_i \frac{U}{4} \mathbf{m}<em>i^2 + \sum_i \mathbf{m}<em>i \cdot (c^\dagger</em>{i} \boxed{\sigma} c</em>{i}),<br>$$</p>
+<p>其中 $\boxed{\sigma}$ 是泡利矩阵矢量。</p>
+<p>BCS理论描述超导，相互作用是吸引的配对相互作用，通常写成：</p>
+<p>$$<br>H_{\text{int}} &#x3D; -V \sum_{\mathbf{k}\mathbf{k}’} c^\dagger_{\mathbf{k}\uparrow} c^\dagger_{-\mathbf{k}\downarrow} c_{-\mathbf{k}’\downarrow} c_{\mathbf{k}’\uparrow},<br>$$</p>
+<p>这是动量空间中自旋相反的电子之间形成配对的相互作用。我们把它写成二次型形式：</p>
+<p>$$<br>H_{\text{int}} &#x3D; -V \Delta^\dagger \Delta, \quad \Delta &#x3D; \sum_{\mathbf{k}} c_{-\mathbf{k}\downarrow} c_{\mathbf{k}\uparrow}.<br>$$</p>
+<p>正好也是辅助场的二次型，可以做HS变换。引入配对场（能隙场）$\Delta$，高斯恒等式给出：</p>
+<p>$$<br>\begin{aligned}<br>&amp; \exp\left( \beta V \Delta^\dagger \Delta \right) &#x3D; \int C d\Delta^\dagger d\Delta \exp\left( -\frac{|\Delta|^2}{V} + \Delta^\dagger \Delta + \Delta \Delta^\dagger \right) \<br>  &amp;&#x3D; \int d\Delta^* d\Delta \exp\left( -\frac{|\Delta|^2}{V} + \Delta^* \sum_{\mathbf{k}} c_{-\mathbf{k}\downarrow} c_{\mathbf{k}\uparrow} + \Delta \sum_{\mathbf{k}} c^\dagger_{\mathbf{k}\uparrow} c^\dagger_{-\mathbf{k}\downarrow} \right).<br>\end{aligned}<br>$$</p>
+<p>因此，变换后得到的哈密顿量就是：</p>
+<p>$$<br>H_{\text{HS, BCS}} &#x3D; \sum_{\mathbf{k}\sigma} \varepsilon_{\mathbf{k}} c^\dagger_{\mathbf{k}\sigma} c_{\mathbf{k}\sigma} + \frac{|\Delta|^2}{V} + \Delta^* \sum_{\mathbf{k}} c_{-\mathbf{k}\downarrow} c_{\mathbf{k}\uparrow} + \Delta \sum_{\mathbf{k}} c^\dagger_{\mathbf{k}\uparrow} c^\dagger_{-\mathbf{k}\downarrow}.<br>$$</p>
+<p>这就是BCS模型HS变换后得到的平均场哈密顿量，配对相互作用解耦为电子与能隙场的线性耦合。</p>
+<p>但是得到了HS变换之后该干什么呢？最直接的方法就是用鞍点近似（也就是最陡下降法）来近似计算泛函积分，由此可以直接得到平均场理论的自洽方程。</p>
+<p>我们以BCS模型为例来说明这个过程。HS变换后的配分函数为：</p>
+<p>$$<br>Z &#x3D; \int d\Delta^* d\Delta e^{-S_{\text{eff}}(\Delta^<em>, \Delta)}, \quad S_{\text{eff}} &#x3D; \beta \frac{|\Delta|^2}{V} - \ln \det \left( \begin{pmatrix} \partial_\tau + \varepsilon_{\mathbf{k}} &amp; \Delta \ \Delta^</em> &amp; -\partial_\tau + \varepsilon_{\mathbf{k}} \end{pmatrix} \right)_{\mathbf{k}}.<br>$$</p>
+<p>均匀超导对应一个常数的 saddle 点解 $\Delta(\tau) &#x3D; \Delta_0$，与虚时间无关。我们对有效作用量在常数场位置求极值，极值条件就是：</p>
+<p>$$<br>\frac{\partial S_{\text{eff}}}{\partial \Delta^*} &#x3D; 0, \quad \frac{\partial S_{\text{eff}}}{\partial \Delta} &#x3D; 0.<br>$$</p>
+<p>计算导数：</p>
+<p>$$<br>\frac{\partial S_{\text{eff}}}{\partial \Delta^*} &#x3D; \frac{\beta \Delta}{V} - \sum_{\mathbf{k}} \left\langle c_{-\mathbf{k}\downarrow} c_{\mathbf{k}\uparrow} \right\rangle &#x3D; 0.<br>$$</p>
+<p>由于在常数 $\Delta$ 下，我们可以对角化BCS哈密顿量，得到Bogoliubov准粒子能量 $E_{\mathbf{k}} &#x3D; \sqrt{\varepsilon_{\mathbf{k}}^2 + |\Delta|^2}$，而热力学平均给出：</p>
+<p>$$<br>\left\langle c^\dagger_{\mathbf{k}\uparrow} c^\dagger_{-\mathbf{k}\downarrow} \right\rangle &#x3D; \frac{\Delta}{2 E_{\mathbf{k}}} \tanh\left( \frac{\beta E_{\mathbf{k}}}{2} \right).<br>$$</p>
+<p>代入极值条件就得到了著名的BCS能隙方程：</p>
+<p>$$<br>\boxed{ \frac{1}{V} &#x3D; \int \frac{d^3k}{(2\pi)^3} \frac{\tanh\left( \frac{\sqrt{\varepsilon_{\mathbf{k}}^2 + \Delta^2}}{2 k_B T} \right)}{2 \sqrt{\varepsilon_{\mathbf{k}}^2 + \Delta^2}} }<br>$$</p>
+<p>这就是通过鞍点近似得到的自洽方程。</p>
+<p>同样对Hubbard模型，我们做类似的操作。假设均匀解，辅助场为常数 $\phi_i &#x3D; \phi_0$，极值条件为：</p>
+<p>$$<br>\frac{\partial S_{\text{eff}}}{\partial \phi_0} &#x3D; 0 \implies \frac{2 \phi_0}{U} &#x3D; \langle n \rangle &#x3D; n,<br>$$</p>
+<p>也就是 $\phi_0 &#x3D; U n&#x2F;2$，代入哈密顿量就是均匀的Hartree近似结果。如果我们考虑反铁磁有序，会得到 $m_{i} &#x3D; m (-1)^i$ 交错磁化，类似的可以得到Stoner自洽方程：</p>
+<p>$$<br>m &#x3D; \frac{1}{2} \left[ f(\varepsilon_{\mathbf{k}} - U m&#x2F;2) - f(\varepsilon_{\mathbf{k}} + U m&#x2F;2) \right],<br>$$</p>
+<p>其中 $f$ 是费米分布函数，这就是Hubbard模型平均场理论的自洽方程。</p>
+<p>平均场理论只取了鞍点处的贡献，而路径积分方法允许我们系统地超越平均场，计算鞍点附近的涨落修正，这就是圈展开微扰论。我们还是以BCS模型为例说明这个过程：</p>
+<p>我们将辅助场在鞍点附近做分解：</p>
+<p>$$<br>\Delta(\mathbf{x},\tau) &#x3D; \Delta_0 + \delta \Delta(\mathbf{x},\tau),<br>$$</p>
+<p>其中 $\Delta_0$ 是满足自洽方程的鞍点解，$\delta \Delta$ 是围绕鞍点的涨落。然后我们将有效作用量 $S_{\text{eff}}$ 围绕 $(\Delta_0, \Delta_0^*)$ 做泰勒展开：</p>
+<p>$$<br>S_{\text{eff}}(\Delta) &#x3D; S_{\text{eff}}(\Delta_0) + \frac{1}{2} \sum_{q} \delta \Delta^*(q) \delta \Delta(-q) D_0^{-1}(q) + \text{高阶相互作用项},<br>$$</p>
+<p>其中一阶项因为极值条件消失了，二阶项给出了涨落传播子的逆，三阶四阶项就是涨落之间的相互作用顶点。</p>
+<p>对于BCS模型，我们来显式计算二阶导数得到逆传播子：</p>
+<p>$$<br>D^{-1}(q) &#x3D; \frac{1}{V} - \Pi(q), \quad \Pi(q) &#x3D; T \sum_n \int \frac{d^3k}{(2\pi)^3} G_0(k+q) G_0(-k),<br>$$</p>
+<p>这里 $q &#x3D; (\mathbf{q}, i\omega_n)$ 是玻色子的四动量，$G_0(k)$ 是Bogoliubov准粒子的传播子，形式为：</p>
+<p>$$<br>G(k) &#x3D; \frac{i\omega_n + E_{\mathbf{k}}}{(i\omega_n)^2 - E_{\mathbf{k}}^2} \tau_0 + \frac{\varepsilon_{\mathbf{k}} \tau_3 + \Delta_0 \tau_1}{(i\omega_n)^2 - E_{\mathbf{k}}^2},<br>$$</p>
+<p>其中 $\tau_i$ 是Nambu空间的泡利矩阵。计算极化函数 $\Pi(q)$ 在零动量转移 $q&#x3D;0$ 处，我们得到：</p>
+<p>$$<br>\Pi(0) &#x3D; \int \frac{d^3k}{(2\pi)^3} \frac{1 - f(E_{\mathbf{k}}) - f(-E_{\mathbf{k}})}{2 E_{\mathbf{k}}} &#x3D; \int \frac{d^3k}{(2\pi)^3} \frac{\tanh(\beta E_{\mathbf{k}}&#x2F;2)}{2 E_{\mathbf{k}}} &#x3D; \frac{1}{V},<br>$$</p>
+<p>这正好满足能隙方程，也就是说在 $T&#x3D;T_c$ 时 $D^{-1}(0)&#x3D;0$，对应安德森-希格斯机制，这个涨落就是集体Nambu-Goldstone模式也就是Anderson-Bogoliubov模式。</p>
+<p>更高阶的微扰修正可以系统计算，包括：</p>
+<ol>
+<li>一阶圈修正可以修正平均场得到的能隙和转变温度 $T_c$；</li>
+<li>涨落贡献会给出额外的相互作用，比如在Hubbard模型中会导致反铁磁自旋波激发；</li>
+<li>在接近量子临界点时，涨落变得很强，高阶修正会改变平均场的结果，给出非费米液体行为等奇特的物理。</li>
+</ol>
+<p>对于任意模型，这套方法都是普适的：HS变换解耦四费米子相互作用，鞍点近似得到平均场自洽方程，然后围绕鞍点做泛函积分的微扰展开，逐阶计算涨落修正，就可以系统地超越平均场理论，这正是路径积分配HS变换方法最大的优势。</p>
+<h1 id="Ward恒等式"><a href="#Ward恒等式" class="headerlink" title="Ward恒等式"></a>Ward恒等式</h1><p>在前面的讨论中，我们已经介绍了量子场论的路径积分表述，引入了连通格林函数生成泛函$W[J] &#x3D; -i\ln Z[J]$，并通过勒让德变换得到了单粒子不可约(1PI)格林函数的生成泛函$\Gamma$，同时引入了自能$\Sigma$描述两点修正。本节我们将讨论连续对称性带来的普遍结论——Ward恒等式，它是对称性对格林函数施加的严格非微扰约束，在凝聚态场论中对理解守恒律、对称性破缺和规范不变性都有核心意义。</p>
+<h3 id="生成泛函基础回顾"><a href="#生成泛函基础回顾" class="headerlink" title="生成泛函基础回顾"></a>生成泛函基础回顾</h3><p>首先我们统一符号定义。对于玻色场$\phi$，外源$J$对应的配分函数（全格林函数生成泛函）为：</p>
+<p>$$<br>Z[J] &#x3D; \int \mathcal{D}\phi , e^{iS[\phi] + i\int d^dx , J(x)\phi(x)}<br>$$</p>
+<p>连通格林函数的生成泛函定义为：</p>
+<p>$$<br>W[J] &#x3D; -i \ln Z[J]<br>$$</p>
+<p>平均场（期望值）满足关系：</p>
+<p>$$<br>\phi_c(x) \equiv \langle \phi(x) \rangle_J &#x3D; \frac{1}{Z[J]}\frac{\delta Z[J]}{i \delta J(x)} &#x3D; \frac{\delta W[J]}{\delta J(x)}<br>$$</p>
+<p>对$W[J]$做勒让德变换，得到以经典场均$\phi_c$为自变量的1PI生成泛函：</p>
+<p>$$<br>\Gamma[\phi_c] &#x3D; W[J] - \int d^dx , J(x) \phi_c(x)<br>$$</p>
+<p>由勒让德变换的性质，我们可以得到逆关系：$\frac{\delta \Gamma}{\delta \phi_c(x)} &#x3D; -J(x)$。对于均匀平移不变的系统，两点1PI格林函数（逆传播子）定义为：</p>
+<p>$$<br>\Gamma^{(2)}(x-y) &#x3D; \frac{\delta^2 \Gamma}{\delta \phi_c(x)\delta \phi_c(y)}, \quad \Gamma^{(2)}(p) &#x3D; G_0^{-1}(p) - \Sigma(p)<br>$$</p>
+<p>其中$\Sigma(p)$就是自能，完全传播子满足$G(p) &#x3D; 1&#x2F;\Gamma^{(2)}(p)$，Dyson方程写为$G(p) &#x3D; G_0(p) + G_0(p)\Sigma(p)G(p)$，这和我们之前对自能的定义一致。</p>
+<h3 id="Ward恒等式的推导：无穷小对称变换法"><a href="#Ward恒等式的推导：无穷小对称变换法" class="headerlink" title="Ward恒等式的推导：无穷小对称变换法"></a>Ward恒等式的推导：无穷小对称变换法</h3><p>现在考虑理论具有一个连续整体对称性，满足：作用量在场上的无穷小变换下不变，且路径积分测度也保持不变（忽略反常）。我们将场上的无穷小对称变换写为位置依赖的形式：</p>
+<p>$$<br>\phi(x) \to \phi’(x) &#x3D; \phi(x) + \delta \phi(x) &#x3D; \phi(x) + \alpha(x) \Delta<a href="x">\phi</a><br>$$</p>
+<p>这里我们将变换参数推广为位置的函数$\alpha(x)$，而非常数，这样我们就可以通过泛函导数得到普遍的恒等式。</p>
+<p>整体对称性要求：当$\alpha(x) &#x3D; \alpha$为常数时，作用量不变：</p>
+<p>$$<br>S[\phi’] &#x3D; S[\phi] + \alpha \int d^dx , \partial_\mu J^\mu(x) + O(\alpha^2) &#x3D; S[\phi]<br>$$</p>
+<p>其中$J^\mu(x)$就是对称性对应的守恒流，分部积分后常数$\alpha$给出的表面项为零，因此$\delta S &#x3D; 0$，即对称性满足$\partial_\mu J^\mu &#x3D; 0$的经典守恒律。当$\alpha(x)$是位置函数时，作用量的一阶变分为：</p>
+<p>$$<br>\delta S &#x3D; \int d^dx , \alpha(x) \partial_\mu J^\mu(x)<br>$$</p>
+<p>现在，配分函数是对所有场构型的积分，场的无穷小变换只是积分变量的平移，测度不变，因此配分函数不变：</p>
+<p>$$<br>Z[J] &#x3D; \int \mathcal{D}\phi’ , e^{iS[\phi’] + i\int J\phi’} &#x3D; \int \mathcal{D}\phi , e^{iS[\phi + \alpha\Delta] + i\int J (\phi + \alpha\Delta)}<br>$$</p>
+<p>将右侧展开到$\alpha(x)$的一阶，我们得到：</p>
+<p>$$<br>Z[J] &#x3D; Z[J] + i \int d^dx , \alpha(x) \int \mathcal{D}\phi \left[ \partial_\mu J^\mu(x) + J(x)\Delta(x) \right] e^{iS + i\int J\phi} + O(\alpha^2)<br>$$</p>
+<p>等式两边一阶项必须为零，因此：</p>
+<p>$$<br>\int d^dx , \alpha(x) \left\langle \partial_\mu J^\mu(x) + J(x)\Delta(x) \right\rangle_J &#x3D; 0<br>$$</p>
+<p>由于$\alpha(x)$是任意函数，我们得到对任意位置$x$成立的恒等式：</p>
+<p>$$<br>\partial_\mu^x \langle J^\mu(x) \rangle_J &#x3D; - \langle J(x)\Delta(x) \rangle_J<br>$$</p>
+<p>这就是含源情况下Ward恒等式的基本形式。</p>
+<p>接下来我们可以推导连通格林函数形式的Ward恒等式。我们先推导包含$n$点场的关联函数形式，在配分函数中引入多个外源，对$J$求泛函导数后可以得到：</p>
+<p>$$<br>\partial_\mu^x \langle J^\mu(x) \phi(y_1)\phi(y_2)\dots\phi(y_n) \rangle &#x3D; -\sum_{i&#x3D;1}^n \delta(x-y_i) \langle \phi(y_1)\dots \Delta\phi(y_i) \dots \phi(y_n) \rangle<br>$$</p>
+<p>这是格林函数层次最一般的Ward恒等式，它的物理意义是：流的散度等价于插入对称性变换在每个外线上的贡献。</p>
+<p>现在我们转到连通生成泛函$W[J]$，对于守恒流我们可以引入外源$J_\mu$耦合到流，即路径积分中加上$i\int d^dx J_\mu(x) J^\mu(x)$，那么直接可以得到：</p>
+<p>$$<br>\partial_\mu^x \frac{\delta W[J, J_\mu]}{\delta J_\mu(x)} &#x3D; \left. \Delta\left[ \frac{\delta W}{\delta J(x)} \right] \right|<em>{J</em>\mu&#x3D;0}<br>$$</p>
+<p>进一步勒让德变换到1PI生成泛函，我们可以得到1PI层次的Ward恒等式，我们下面以凝聚态中最常见的$U(1)$整体对称性为例，给出具体形式。</p>
+<h3 id="U-1-对称性的具体形式与举例"><a href="#U-1-对称性的具体形式与举例" class="headerlink" title="U(1)对称性的具体形式与举例"></a>U(1)对称性的具体形式与举例</h3><p>考虑凝聚态中常见的复场模型，描述带电粒子，拉格朗日密度为：</p>
+<p>$$<br>\mathcal{L} &#x3D; |\partial_\mu \psi|^2 - m^2 |\psi|^2 - \frac{\lambda}{4} \left(|\psi|^2\right)^2<br>$$</p>
+<p>该模型具有整体$U(1)$对称性：</p>
+<p>$$<br>\psi(x) \to e^{i\alpha(x)} \psi(x) \approx \psi(x) + i\alpha(x)\psi(x), \quad \psi^<em>(x) \to e^{-i\alpha(x)} \psi(x)^</em> \approx \psi^<em>(x) - i\alpha(x)\psi^</em>(x)<br>$$</p>
+<p>即变换满足$\Delta \psi &#x3D; i\psi$，$\Delta \psi^* &#x3D; -i\psi^*$。对应的守恒流为：</p>
+<p>$$<br>J^\mu &#x3D; i \left( \psi^* \partial^\mu \psi - \psi \partial^\mu \psi^* \right)<br>$$</p>
+<p>满足经典守恒方程$\partial_\mu J^\mu &#x3D; 0$。</p>
+<p>我们先对两点函数应用Ward恒等式，也就是我们最常用的自能满足的关系。考虑关联函数$\langle J^\mu(k) \psi(p) \psi^*(p+k) \rangle$，应用Ward恒等式我们得到：</p>
+<p>$$<br>k_\mu \langle J^\mu(k) \psi(p) \psi^<em>(p+k) \rangle &#x3D; \langle \psi(p) \psi^</em>(p+k) \rangle - \langle \psi(p) \psi^*(p+k) \rangle &#x3D; 0<br>$$</p>
+<p>左边的关联函数可以写成1PI顶点展开，<br>转到动量空间的1PI两点函数，我们有$\Gamma^{(2)}(p) &#x3D; p^2 - m^2 - \Sigma(p)$，对于U(1)对称性，Ward恒等式给出：</p>
+<p>$$<br>\Sigma(p, p+k) \Big|_{k\to 0} &#x3D; 0<br>$$</p>
+<p>对于平移不变系统，自能只依赖于动量差，我们得到最重要的结论：**对于守恒电荷传播子，化学势满足粒子数守恒要求$\Sigma(\omega&#x3D;0, p&#x3D;p_F) &#x3D; 0$，费米能级保持不变，这就是朗道费米液体理论中Ward恒等式的核心结论。</p>
+<p>接下来我们对四顶点函数举例分析，考虑四顶点过程：两个费米子散射，同时注入一个动量为$k$的守恒流，过程对应顶点函数$\Gamma^\mu(p_1, p_2, p_3, p_4)$，描述$J^\mu \psi(p_1) \psi^<em>(p_2) \psi(p_3) \psi^</em>(p_4)$的1PI关联函数。应用Ward恒等式我们得到：</p>
+<p>$$<br>k_\mu \Gamma^\mu(p_1, p_2, p_3, p_4) &#x3D; \Gamma^{(4)}(p_1 - k, p_2, p_3, p_4) - \Gamma^{(4)}(p_1, p_2 -k, p_3, p_4) + \Gamma^{(4)}(p_1, p_2, p_3 -k, p_4) - \Gamma^{(4)}(p_1, p_2, p_3, p_4 -k)<br>$$</p>
+<p>当$k\to 0$时，我们可以展开右侧得到：</p>
+<p>$$<br>\lim_{k\to 0} \frac{1}{k_\mu} \left[ \Gamma^{(4)}(p - k) - \Gamma^{(4)}(p) \right] &#x3D; \frac{\partial \Gamma^{(4)}}{\partial p_\mu}<br>$$</p>
+<p>也就是说，流顶点在软动量极限下就是四顶点对动量的导数，这一关系在计算输运性质中的电流顶点修正时非常重要：它告诉我们，朗道参数中只有$F_0$和$F_1$会影响直流电导率，高阶朗道参数的贡献被Ward恒等式抵消。</p>
+<p>我们再看规范对称性的情况，对于凝聚态中的规范场（比如超导体中的电磁场），Ward恒等式要求光子自能满足：</p>
+<p>$$<br>\Pi_{\mu\nu}(k) &#x3D; (k^2 \eta_{\mu\nu} - k_\mu k_\nu) \Pi(k^2)<br>$$</p>
+<p>这直接给出$\Pi_{\mu\nu}(k&#x3D;0) &#x3D; 0$，也就是光子的零动量自能为零，保证了规范不变性不会被量子修正破坏，对应超导体中迈斯纳效应就是自能在有限动量产生质量项。<br>我们可以具推导这件事，孙老师的综述论文中正是阐述了在超导体中的电动力学。见Kondo Floquet里面</p>
+<p>$$<br>S&#x3D;\frac{1}{2}\sum_qK^{\mu\nu}(q)(\partial_\mu\theta+eA_\mu)<em>{-q}(\partial</em>\nu\theta+eA_\nu)_{q}<br>$$</p>
+<p>我们现在讨论积分掉物质自由度后，规范场有效作用量满足的Ward恒等式。已经积分掉物质场得到的规范场二阶有效作用量为：</p>
+<p>$$<br>S_{\text{eff}}[A] &#x3D; \frac{1}{2}\sum_q \Pi^{\mu\nu}(q) A_\mu(-q) A_\nu(q)<br>$$</p>
+<p>其中我们采用约定$A_0 &#x3D; \phi$，空间分量$A_i$ ($i&#x3D;1,2,3$)，指标$\mu,\nu &#x3D; 0,1,2,3$，$\Pi^{\mu\nu}(q)$就是极化张量（对应规范场的自能）。</p>
+<p>非相对论规范变换为：</p>
+<p>$$<br>\phi \to \phi - \nabla\cdot \chi, \quad A_i \to A_i + \partial_t \chi<br>$$</p>
+<p>写成四维形式，无穷小规范变换可以写为：</p>
+<p>$$<br>A_\mu(x) \to A_\mu(x) + \partial_\mu \chi(x), \quad \mu&#x3D;0,1,2,3<br>$$</p>
+<p>其中$\partial_0 &#x3D; \partial_t$，因此$\partial_0 \chi &#x3D; \partial_t \chi$对应空间分量$A_i$的变换，而$\partial_i \chi &#x3D; \nabla_i \chi$对应$A_0&#x3D;\phi$的变换$\phi \to \phi - \nabla\cdot\chi$，符号差异只是规范变换的整体符号约定，不影响最终结论。</p>
+<h3 id="规范不变性与Ward恒等式推导"><a href="#规范不变性与Ward恒等式推导" class="headerlink" title="规范不变性与Ward恒等式推导"></a>规范不变性与Ward恒等式推导</h3><p>有效作用量必须满足规范不变性：当$A_\mu \to A_\mu + \partial_\mu \chi$时，有效作用量保持不变，即一阶变分$\delta S_{\text{eff}} &#x3D; 0$对任意$\chi(x)$成立。</p>
+<p>我们先对位置空间做变分：位置空间有效作用量为：</p>
+<p>$$<br>S_{\text{eff}}[A] &#x3D; \frac{1}{2}\int d^dx d^dy , \Pi^{\mu\nu}(x-y) A_\mu(x) A_\nu(y)<br>$$</p>
+<p>做无穷小变换$\delta A_\mu(x) &#x3D; \partial_\mu \chi(x)$，代入得一阶变分：</p>
+<p>$$<br>\delta S_{\text{eff}} &#x3D; \int d^dx d^dy , \Pi^{\mu\nu}(x-y) A_\mu(x) \partial^y_\nu \chi(y) &#x3D; 0<br>$$</p>
+<p>对$y$做分部积分，假设边界项为零，我们得到：</p>
+<p>$$</p>
+<ul>
+<li>\int d^dx d^dy , \partial^y_\nu \Pi^{\mu\nu}(x-y) A_\mu(x) \chi(y) &#x3D; 0<br>$$</li>
+</ul>
+<p>由于$\chi(y)$是任意函数，因此被积函数必须为零，位置空间的关系为：</p>
+<p>$$<br>\partial_\nu^y \Pi^{\mu\nu}(x-y) &#x3D; 0 \quad \forall x<br>$$</p>
+<p>我们现在傅里叶变换到动量空间，平移不变系统$\Pi^{\mu\nu}(x-y)$只依赖于$q &#x3D; x-y$，傅里叶变换满足：</p>
+<p>$$<br>\Pi^{\mu\nu}(x-y) &#x3D; \int \frac{d^dq}{(2\pi)^d} e^{iq\cdot(x-y)} \Pi^{\mu\nu}(q)<br>$$</p>
+<p>位置空间导数$\partial^y_\nu e^{iq\cdot(x-y)} &#x3D; -i q_\nu e^{iq\cdot(x-y)}$，代入位置空间关系我们得到：</p>
+<p>$$<br>(-i q_\nu) \Pi^{\mu\nu}(q) &#x3D; 0 \implies \boxed{q_\nu \Pi^{\mu\nu}(q) &#x3D; 0 \quad \forall \mu, q}<br>$$</p>
+<p>这就是规范不变性要求的Ward恒等式，是规范不变性对极化张量的直接约束。</p>
+<h3 id="具体分量形式分析"><a href="#具体分量形式分析" class="headerlink" title="具体分量形式分析"></a>具体分量形式分析</h3><p>我们可以把指标分开，写出Ward恒等式的具体分量形式：对任意$\mu$，$q_\nu \Pi^{\mu\nu} &#x3D; 0$，即：</p>
+<p>$$<br>q_0 \Pi^{\mu 0} + q_i \Pi^{\mu i} &#x3D; 0 \quad (\text{求和重复指标})<br>$$</p>
+<p>我们分两种情况验证：</p>
+<ol>
+<li><strong>当$\mu &#x3D; 0$时</strong>：Ward恒等式为 $q_0 \Pi^{00} + q_i \Pi^{0i} &#x3D; 0 \implies \Pi^{0i} &#x3D; -\frac{q_0 q_i}{q^2} \Pi^{00}$，这正好对应非相对论规范不变性要求的关系。</li>
+<li><strong>当$\mu &#x3D; i$时</strong>：Ward恒等式为 $q_0 \Pi^{i0} + q_j \Pi^{ij} &#x3D; 0$，利用极化张量对称性$\Pi^{\mu\nu} &#x3D; \Pi^{\nu\mu}$，因此$\Pi^{i0} &#x3D; \Pi^{0i} &#x3D; -\frac{q_0 q_i}{q^2} \Pi^{00}$，代入得：</li>
+</ol>
+<p>$$<br>\Pi^{ij}(q) &#x3D; -\frac{q_0}{q_j}\Pi^{i0} &#x3D; \frac{q_0^2 q_i q_j}{q^2 q_j} \frac{\Pi^{00}}{q_j} \implies \Pi^{ij}(q) &#x3D; \left(\delta^{ij} - \frac{q_i q_j}{q^2}\right) \Pi^T(q) + \frac{q_i q_j}{q_0^2} \Pi^{00}(q)<br>$$</p>
+<pre><code>这说明极化张量总是可以写为横向投影算子加上纵向分量，符合规范不变性的要求。
+</code></pre>
+<h3 id="从一般Ward恒等式出发的推导"><a href="#从一般Ward恒等式出发的推导" class="headerlink" title="从一般Ward恒等式出发的推导"></a>从一般Ward恒等式出发的推导</h3><p>我们也可以用之前通用的生成泛函方法推导，对于规范场，配分函数为：</p>
+<p>$$<br>Z[J] &#x3D; \int \mathcal{D}A , e^{iS_{\text{eff}}[A] + i\int d^dx J^\mu(x) A_\mu(x)}<br>$$</p>
+<p>在规范变换$A_\mu \to A_\mu + \partial_\mu \chi$下，配分函数不变，测度不变，因此展开一阶项得到：</p>
+<p>$$<br>0 &#x3D; i\int d^dx \chi(x) \left( \partial_\mu \frac{\delta W[J]}{\delta J_\mu(x)} \right), \quad W &#x3D; -i\ln Z<br>$$</p>
+<p>任意$\chi$给出Ward恒等式：</p>
+<p>$$<br>\partial_\mu \frac{\delta W[J]}{\delta J_\mu(x)} &#x3D; 0<br>$$</p>
+<p>对$J_\nu(y)$求泛函导数，然后令$J&#x3D;0$，我们得到连通两点格林函数满足：</p>
+<p>$$<br>\partial_\mu^x \langle A_\mu(x) A_\nu(y) \rangle &#x3D; 0<br>$$</p>
+<p>傅里叶变换到动量空间就是：</p>
+<p>$$<br>i q_\mu D^{\mu\nu}(q) &#x3D; 0 \implies q_\mu D^{\mu\nu}(q) &#x3D; 0<br>$$</p>
+<p>其中$D^{\mu\nu}(q) &#x3D; (\Pi^{-1})^{\mu\nu}(q)$是规范场传播子，逆过来就是我们之前得到的$q_\nu \Pi^{\mu\nu}(q) &#x3D; 0$，两种推导完全自洽。</p>
+<p>如果考虑相互作用项，更高阶n点规范顶点也满足推广的Ward恒等式：对任意$n$点顶点$\Gamma^{\mu_1\mu_2\dots\mu_n}(q_1,q_2,\dots,q_n)$，满足$q_{i\mu_i} \Gamma^{\dots\mu_i\dots} &#x3D; 0$，都是规范不变性的直接结果。</p>
+<h3 id="Ward恒等式在凝聚态场论中的意义"><a href="#Ward恒等式在凝聚态场论中的意义" class="headerlink" title="Ward恒等式在凝聚态场论中的意义"></a>Ward恒等式在凝聚态场论中的意义</h3><p>Ward恒等式是连续对称性对所有阶微扰都成立的严格约束，不依赖于展开阶次，其核心结论包括：</p>
+<ol>
+<li>自能修正满足的约束：对于粒子数守恒对称性，费米表面位置不会被相互作用修正，保证了朗道费米液体的基本假设成立；</li>
+<li>戈德斯通定理证明：连续对称性自发破缺后，戈德斯通玻色子的质量必须为零，这一结论可以直接由Ward恒等式导出；</li>
+<li>发散消除：可重整化性论证中，Ward恒等式保证了规范理论中只有有限个发散顶角，发散都可以被已有的耦合常数吸收，不会引入新的发散；</li>
+<li>反常：如果路径积分测度在对称性变换下不不变，Ward恒等式会出现额外的反常项，对应量子力学破坏经典对称性，这在分数量子霍尔效应中也有重要应用。</li>
+</ol>
+<p>下面我们就这几项分别进行阐述：</p>
+<h4 id="自能修正"><a href="#自能修正" class="headerlink" title="自能修正"></a>自能修正</h4><p>对于满足粒子数守恒的系统，其哈密顿量满足U(1)对称性，也就是说当我们做规范变换时，令$\psi\rightarrow e^{i\alpha}\psi$,$\bar{\psi}\rightarrow e^{-i\alpha}\bar{\psi}$时，<br>作用两形式不发生改变。与之前的形式相同，这里$\delta\psi&#x3D;i\alpha\psi$,代入Ward identity可以得到：</p>
+<p>$$<br>\langle\partial_\mu J^{\mu}(k)\psi^{\dagger}(k+q)\psi(q)\rangle&#x3D;\langle\psi^\dagger(k+q)\psi(k+q)\rangle-\langle\psi^\dagger(q)\psi(q)\rangle<br>$$</p>
+<p>在此情况下令$k&#x3D;0$,变换就变成了:</p>
+<p>$$<br>\Gamma^0(k,k,q&#x3D;0,\omega&#x3D;0)&#x3D;\frac{\partial G^{-1}}{\partial\mu}<br>$$</p>
+<p>代入Dyson方程：</p>
+<p>$$<br>G^{-1}&#x3D;G_0^{-1}-\Sigma&#x3D;i\omega+\mu-\epsilon_k-\Sigma<br>$$</p>
+<p>费米面位置是格林函数的极点，于是就满足：</p>
+<p>$$<br>-\epsilon_{k_F}+\mu-\Re\Sigma(k_F,0)&#x3D;0<br>$$</p>
+<p>对$\mu$求偏导就得到：</p>
+<p>$$<br>1-\frac{\partial\Re\Sigma(k_F,0)}{\partial\mu}-\nabla_k[\Re\Sigma(k_F,0)]\frac{d k_F}{d\mu}-\nabla_k[\epsilon_k]\frac{dk_F}{d\mu}<br>$$</p>
+<p>我们惊奇的发现现在的运动方程还是保持：</p>
+<p>$$<br>\Gamma^0(k,k,q&#x3D;0,\omega&#x3D;0)&#x3D;v_F^*\frac{dk_F}{d\mu}<br>$$</p>
+<p>只是费米速度修正成为$v_F&#x3D;\nabla_k(\epsilon_k+\Sigma(k_F,0))$。什么叫费米面的位置？因为我们发现$Z\Gamma^0(k_F;k_F;0)&#x3D;1$。这个等式的<br>物理意义是：虽然相互作用产生了自能修正，并且在密度相应中产生了顶点修正，但是两者的乘积恰好抵消。费米面包围的体积是粒子数密度的拓扑不变量。</p>
+<h4 id="Goldstone-mode的存在性以及Goldstone定理"><a href="#Goldstone-mode的存在性以及Goldstone定理" class="headerlink" title="Goldstone mode的存在性以及Goldstone定理"></a>Goldstone mode的存在性以及Goldstone定理</h4><p>Goldstone定理说的是对称性自发破缺的体系一定存在零质量粒子的运动模式。重要的关键词一个是<br>存在对称性自发破缺，一个是零质量粒子的运动模式，这两者是怎么联系起来的呢？自发对称性破缺的<br>定义是在对称性变换下某个局域算符（比如说序参量的改变量不为0，设为$\delta\Delta$），那么由Ward不等式，对称性变换后：</p>
+<p>$$<br>\partial_\mu\langle J^{\mu}\Delta\rangle&#x3D;-i\delta^4(x)\langle\delta\Delta\rangle<br>$$</p>
+<p>变换到动量空间即为：</p>
+<p>$$<br>q_\mu M^{\mu}&#x3D;\langle\delta\Delta\rangle&#x3D;v<br>$$</p>
+<p>为了使得$q_\mu M^{\mu}$在$q\rightarrow0$时趋于一个非零常数$v$，格林函数在$q\rightarrow0$附近的行为必须是：</p>
+<p>$$<br>M^{\mu}&#x3D;\frac{q^{\mu}}{q^2}v<br>$$</p>
+<p>这是什么？实际上这正是无能隙的准粒子激发！所以说等价于找到了一个无质量的玻色子粒子模式——即为Goldstone玻色子。</p>
+<h4 id="解决重整化的发散问题"><a href="#解决重整化的发散问题" class="headerlink" title="解决重整化的发散问题"></a>解决重整化的发散问题</h4><p>这个应该在量子场论中更加常见吧。假如说存在紫外发散常用Ward-Takahashi 把发散的角变成0。非常方便，简直是居家必备（bushi）</p>
+<h4 id="反常：标度变化"><a href="#反常：标度变化" class="headerlink" title="反常：标度变化"></a>反常：标度变化</h4><p>这一般会在QCD中出现，由于量子涨落和重整化过程破坏了标度对称性，似乎跟我们的主题不太相关啊。</p>
+<h1 id="补充：开放系统的Ward-identity"><a href="#补充：开放系统的Ward-identity" class="headerlink" title="补充：开放系统的Ward identity"></a>补充：开放系统的Ward identity</h1><p>这是最近看到的一篇感觉很不错的文章。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog">CHY</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://c1-h-y.github.io/myblog/2026/07/25/04_%E5%9F%BA%E7%A1%80_%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95/">https://c1-h-y.github.io/myblog/2026/07/25/04_%E5%9F%BA%E7%A1%80_%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://c1-h-y.github.io/myblog" target="_blank">Allen's personal blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/myblog/img/chy.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/myblog/2026/07/25/07_%E8%B6%85%E5%AF%BC/" title="超导"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">超导</div></div><div class="info-2"><div class="info-item-1">人们将低温下直流电阻消失的现象称为超导电性，具有超导电性的材料称为超导体。知道20世纪80年代中期，人们发现了一系列超导体，但其转变温度$T_c$都没有突破30K大关，这些超导体被称为常规超导体，可以用BCS理论解释。直到1986年后，人们在多元的铜氧化合物中找到了一系列超过30K的超导体。 常规超导：BCS理论巴丁，库珀等人认为超导基态是电子按照库珀对分布的状态，在二者质心中，分别可以用$c_{k\uparrow}^\dagger,c_{-k\downarrow}^\dagger$表示。这听起来很合理吗？好像挺合理的是吧，$1&#x2F;2$自旋的粒子就一上一下这么配对了。但是在一个宏观大的超导体里面，两个电子凭什么就这么呆在一块不分离呢？这里就有两点：第一，配对是指动量空间配对，而实际空间上两个电子并不在一块(与BEC不同，这后面也会讲)；第二，在声子相互作用下，粒子之间会产生等效的吸引力。(这在Anderson的书中有精彩的论述，在凝聚态系统中，即使是repulsion或者散射也可能产生等效的吸引相互作用！)下面我们先看这种吸引相互作用是怎么来的： 首先粒子，声子系统的总哈...</div></div></div></a><a class="pagination-related" href="/myblog/2026/07/25/06_%E8%B4%B9%E7%B1%B3%E6%B6%B2%E4%BD%93/" title="费米液体"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">费米液体</div></div><div class="info-2"><div class="info-item-1">费米液体的主要贡献者其实是朗道啊。实际上应该是叫朗道费米液体，其载荷粒子是准粒子。定义为没有相互作用的粒子系统，一个突出特征就是面对微扰的鲁棒性，我们知道Coulomb相互作用实际上在电子气中相当重要，但是实际上费米液体理论依然适用，由于能量为$\epsilon$的准粒子激发寿命为: $$\tau^{-1}(\epsilon)\approx\epsilon^2+\pi^2T^2$$ 这是由电子满足的泡利不相容原理所保证的，具体证明如下：只考虑二体相互作用导致的衰变$\epsilon_1+\epsilon_2&#x3D;\epsilon_3+\epsilon_4$，那么衰变率可以写为： $$\frac{1}{\tau} &#x3D; 2\pi \int |V|^2 \rho(\epsilon_2)\rho(\epsilon_3)\rho(\epsilon_4) f(\epsilon_2)(1-f(\epsilon_3))(1-f(\epsilon_4)) \delta(\epsilon_1+\epsilon_2-\epsilon_3-\epsilon_4) d\epsilon_2 ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CHY</div><div class="author-info-description">记录学习与思考</div><div class="site-data"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">实时格林函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%97%B6%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">虚时格林函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">路径积分表示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ward%E6%81%92%E7%AD%89%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">Ward恒等式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%B3%9B%E5%87%BD%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成泛函基础回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ward%E6%81%92%E7%AD%89%E5%BC%8F%E7%9A%84%E6%8E%A8%E5%AF%BC%EF%BC%9A%E6%97%A0%E7%A9%B7%E5%B0%8F%E5%AF%B9%E7%A7%B0%E5%8F%98%E6%8D%A2%E6%B3%95"><span class="toc-number">4.0.2.</span> <span class="toc-text">Ward恒等式的推导：无穷小对称变换法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#U-1-%E5%AF%B9%E7%A7%B0%E6%80%A7%E7%9A%84%E5%85%B7%E4%BD%93%E5%BD%A2%E5%BC%8F%E4%B8%8E%E4%B8%BE%E4%BE%8B"><span class="toc-number">4.0.3.</span> <span class="toc-text">U(1)对称性的具体形式与举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E4%B8%8D%E5%8F%98%E6%80%A7%E4%B8%8EWard%E6%81%92%E7%AD%89%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="toc-number">4.0.4.</span> <span class="toc-text">规范不变性与Ward恒等式推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%88%86%E9%87%8F%E5%BD%A2%E5%BC%8F%E5%88%86%E6%9E%90"><span class="toc-number">4.0.5.</span> <span class="toc-text">具体分量形式分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E4%B8%80%E8%88%ACWard%E6%81%92%E7%AD%89%E5%BC%8F%E5%87%BA%E5%8F%91%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="toc-number">4.0.6.</span> <span class="toc-text">从一般Ward恒等式出发的推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ward%E6%81%92%E7%AD%89%E5%BC%8F%E5%9C%A8%E5%87%9D%E8%81%9A%E6%80%81%E5%9C%BA%E8%AE%BA%E4%B8%AD%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number">4.0.7.</span> <span class="toc-text">Ward恒等式在凝聚态场论中的意义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E8%83%BD%E4%BF%AE%E6%AD%A3"><span class="toc-number">4.0.7.1.</span> <span class="toc-text">自能修正</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Goldstone-mode%E7%9A%84%E5%AD%98%E5%9C%A8%E6%80%A7%E4%BB%A5%E5%8F%8AGoldstone%E5%AE%9A%E7%90%86"><span class="toc-number">4.0.7.2.</span> <span class="toc-text">Goldstone mode的存在性以及Goldstone定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%87%8D%E6%95%B4%E5%8C%96%E7%9A%84%E5%8F%91%E6%95%A3%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.7.3.</span> <span class="toc-text">解决重整化的发散问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B8%B8%EF%BC%9A%E6%A0%87%E5%BA%A6%E5%8F%98%E5%8C%96"><span class="toc-number">4.0.7.4.</span> <span class="toc-text">反常：标度变化</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E5%BC%80%E6%94%BE%E7%B3%BB%E7%BB%9F%E7%9A%84Ward-identity"><span class="toc-number">5.</span> <span class="toc-text">补充：开放系统的Ward identity</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-08-29T16:00:00.000Z" title="发表于 2026-08-30 00:00:00">2026-08-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型">Bethe Ansatz方法求解一维海森堡自旋链模型</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统">相互作用电子系统</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By CHY</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog/js/utils.js?v=5.6.0"></script><script src="/myblog/js/main.js?v=5.6.0"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
+  }
+
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
+
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script src="/js/custom.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

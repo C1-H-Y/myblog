@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Allen's personal blog - 技术 &amp; 学习笔记</title><meta name="author" content="CHY"><meta name="copyright" content="CHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习与思考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Allen&#39;s personal blog">
+<meta property="og:url" content="https://c1-h-y.github.io/myblog/index.html">
+<meta property="og:site_name" content="Allen&#39;s personal blog">
+<meta property="og:description" content="记录学习与思考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://c1-h-y.github.io/myblog/img/chy.png">
+<meta property="article:author" content="CHY">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c1-h-y.github.io/myblog/img/chy.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/myblog/img/chy.png"><link rel="canonical" href="https://c1-h-y.github.io/myblog/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/myblog/css/index.css?v=5.6.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Allen\'s personal blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #0a0a0a;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog/"><span class="site-name">Allen's personal blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/archives/"><i class="fa-fw fas fa-archive"></i><span> list</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/share/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></div><div class="menus_item"><a class="site-page" href="/myblog/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Allen's personal blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-08-29T16:00:00.000Z" title="发表于 2026-08-30 00:00:00">2026-08-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">更为准确的说是Mott相变，来自相互作用对电子在材料中的阻滞现象。 比较经典的模型为Hubbard Model。 $$H&#x3D;-\sum_{\langle i,j\rangle,\sigma}c_{i\sigma}^\dagger c_{j\sigma}+U\sum_{i} n_{i\uparrow}n_{i\downarrow}$$ 包括了准粒子激发的能量以及自旋-自旋相互作用大小U. Bethe ansatzBethe ansatz指的是假设有相互作用的Hubbard model中的自选向上向下的电子仍然可以拆分为两种平面波来计算。实际上这和自旋波的计算是完全等价的，这我们将在下一节中证明这一点。不过相比自旋波，这里看起来更加让人眼花缭乱。首先我们可以定义交换算符，在自旋轨道的二次量子化下，这样定义的交换算符为 $$P(i,j)&#x3D;1-(c_i^\dagger-c_j^\dagger)(c_i-c_j),$$ 满足关系式子： $$P_{i,j}c_i&#x3D;c_jP_{i,j}.$$ 对于交换的路径进行研究，我们可以得到 $$U_n&#x3D;P_{n,n-...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">更为准确的说是Mott相变，来自相互作用对电子在材料中的阻滞现象。 比较经典的模型为Hubbard Model。 $$H&#x3D;-\sum_{\langle i,j\rangle,\sigma}c_{i\sigma}^\dagger c_{j\sigma}+U\sum_{i} n_{i\uparrow}n_{i\downarrow}$$ 包括了准粒子激发的能量以及自旋-自旋相互作用大小U. Bethe ansatzBethe ansatz指的是假设有相互作用的Hubbard model中的自选向上向下的电子仍然可以拆分为两种平面波来计算。实际上这和自旋波的计算是完全等价的，这我们将在下一节中证明这一点。不过相比自旋波，这里看起来更加让人眼花缭乱。首先我们可以定义交换算符，在自旋轨道的二次量子化下，这样定义的交换算符为 $$P(i,j)&#x3D;1-(c_i^\dagger-c_j^\dagger)(c_i-c_j),$$ 满足关系式子： $$P_{i,j}c_i&#x3D;c_jP_{i,j}.$$ 对于交换的路径进行研究，我们可以得到 $$U_n&#x3D;P_{n,n-...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型">Bethe Ansatz方法求解一维海森堡自旋链模型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">一维可积自旋链模型是统计物理和凝聚态物理中少数可以严格求解的强关联多体量子系统，Bethe Ansatz（贝特拟设）是构造这类系统精确解的核心方法。本节以反铁磁XXX海森堡自旋链为例，从双磁子散射开始，完整推导Bethe Ansatz解，介绍其核心物理性质。 海森堡XXX自旋链哈密顿量我们考虑周期性边界条件下长度为$L$的一维自旋1&#x2F;2链，最近邻海森堡交换相互作用的哈密顿量为： $$H &#x3D; J \sum_{n&#x3D;1}^{L} \mathbf{S}n \cdot \mathbf{S}{n+1}, \quad \mathbf{S}_{L+1} &#x3D; \mathbf{S}_1$$ 其中$J&gt;0$对应反铁磁相互作用，$J&lt;0$对应铁磁相互作用，$\mathbf{S}_n &#x3D; (\sigma_n^x&#x2F;2, \sigma_n^y&#x2F;2, \sigma_n^z&#x2F;2)$是第$n$个格点的自旋1&#x2F;2算符，$\sigma^\alpha$为泡利矩阵。利用升降自旋算符$S_n^\pm &#x3D; S_n^x...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">对称性破缺什么是对称性破缺？在正常我们所研究的系统中，空间永远是处处均匀且各向同性的，满足空间反演对称性以及时间反演对称性。从宇宙学这方面开始讲起，有一种假说是说现在基本粒子满足的SU(3)对称性是由于宇宙大爆炸从更高的对称性破缺而产生的。另外，对于温度足够高的气体，会气化并且变成等离子体。这样的状态显然适合基本的物理方程是等价的。但冷物质确实完全不同的情况。当你踢一块石头，刚度将导致其内部粒子处在原来位置不动，但平移对称性处处被破坏。不同于像天体中引力波实际上并不怎么改变空间的性质，那些天体局部的物理方程仍然保持各向同性。但对于气体液体到固体的相变，一瞬间整个系统都变得各向异性了，我们对这种环境的描述要发生彻底的改变。而激光则属于是另一种对称性破缺，在激光的相变过程中，我们知道发生了粒子数反转之类的事情，这可以看作是局域的对称性破缺。 不过对称性破缺并不是冷物质改变其行为唯一的方式，比如说近藤问题中，系统实际上是连续的从局域化的磁性相转变到了非磁性相。许多有局限的维度的系统都展现出了这样的性质。物理上的实现当然是近似的，但是呢确实能展现出一维系统的这些性质。实验上表明，当物体冷...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统">相互作用电子系统</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">这个部分可能是最先把我绕迷糊的地方了，格林函数什么的就很恶心，然后又出来一堆奇奇怪怪的结论。而且这一章用到的方法都是凝聚态物理中的经典范式，所以不可谓不重要。 线性响应理论过去到现在主流的表述总是在不断发展的，从薛定谔方程，到海森堡绘景再到路径积分表述，计算工具的不同导致了表达方式的不同，我们采取循序渐进的叙述方式好了。描述随着时间响应最自然的表述是海森堡绘景。我们知道在哈密顿量为$H&#x3D;H(t)$的系统中，物理量随时间的变化写为： $$A(t)&#x3D;e^{i\int H(t)dt}Ae^{-i\int H(t)dt}$$ 我们关心物理量$A$关于物理场$\epsilon$的响应，也就是说A可以写为$\epsilon$的函数： $$A(t)&#x3D;\int_{-\infty}^{t}\chi_{AB}(t-t’)\epsilon(t’)dt’$$ 在相互作用并不大的时候，一般来说响应函数$\chi_{AB}$并不依赖于AB，这是线性响应理论所做的近似，形式上等价于微扰哈密顿量写为： $$H&#x3D;H_0+H_1,H_1(t)&#x3D;\epsilon(t)...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/06_%E8%B4%B9%E7%B1%B3%E6%B6%B2%E4%BD%93/" title="费米液体">费米液体</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">费米液体的主要贡献者其实是朗道啊。实际上应该是叫朗道费米液体，其载荷粒子是准粒子。定义为没有相互作用的粒子系统，一个突出特征就是面对微扰的鲁棒性，我们知道Coulomb相互作用实际上在电子气中相当重要，但是实际上费米液体理论依然适用，由于能量为$\epsilon$的准粒子激发寿命为: $$\tau^{-1}(\epsilon)\approx\epsilon^2+\pi^2T^2$$ 这是由电子满足的泡利不相容原理所保证的，具体证明如下：只考虑二体相互作用导致的衰变$\epsilon_1+\epsilon_2&#x3D;\epsilon_3+\epsilon_4$，那么衰变率可以写为： $$\frac{1}{\tau} &#x3D; 2\pi \int |V|^2 \rho(\epsilon_2)\rho(\epsilon_3)\rho(\epsilon_4) f(\epsilon_2)(1-f(\epsilon_3))(1-f(\epsilon_4)) \delta(\epsilon_1+\epsilon_2-\epsilon_3-\epsilon_4) d\epsilon_2 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/04_%E5%9F%BA%E7%A1%80_%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95/" title="基础：格林函数总结以及路径积分方法">基础：格林函数总结以及路径积分方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">在凝聚态量子场论中，格林函数是十分重要的数学工具，在此总结一下需要用到的格林函数以及在路径积分表示下是怎么回事。 实时格林函数在物理系统中，格林函数被用来表示物理量之间的关联，实时格林函数是在零温下描述系统关于量子态的分配的平均值。 $$C(t_1,t_2)&#x3D;\langle A(t_1)B(t_2)\rangle$$ 基于因果律，有时我们要引入推迟（retarded）和超前（advanced）格林函数的表达式为： $$\begin{aligned}\text{Greater: } &amp; G^{&gt;}(t_1,t_2) &#x3D; -\mathrm{i} \langle A(t_1)B(t_2) \rangle \\text{Lesser: } &amp; G^{&lt;}(t_1,t_2) &#x3D; -\zeta \mathrm{i} \langle B(t_2)A(t_1) \rangle \\text{Time-ordered: } &amp; G^{T}(t_1,t_2) &#x3D; -\mathrm{i} \langle \mathcal{T}...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/07_%E8%B6%85%E5%AF%BC/" title="超导">超导</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">人们将低温下直流电阻消失的现象称为超导电性，具有超导电性的材料称为超导体。知道20世纪80年代中期，人们发现了一系列超导体，但其转变温度$T_c$都没有突破30K大关，这些超导体被称为常规超导体，可以用BCS理论解释。直到1986年后，人们在多元的铜氧化合物中找到了一系列超过30K的超导体。 常规超导：BCS理论巴丁，库珀等人认为超导基态是电子按照库珀对分布的状态，在二者质心中，分别可以用$c_{k\uparrow}^\dagger,c_{-k\downarrow}^\dagger$表示。这听起来很合理吗？好像挺合理的是吧，$1&#x2F;2$自旋的粒子就一上一下这么配对了。但是在一个宏观大的超导体里面，两个电子凭什么就这么呆在一块不分离呢？这里就有两点：第一，配对是指动量空间配对，而实际空间上两个电子并不在一块(与BEC不同，这后面也会讲)；第二，在声子相互作用下，粒子之间会产生等效的吸引力。(这在Anderson的书中有精彩的论述，在凝聚态系统中，即使是repulsion或者散射也可能产生等效的吸引相互作用！)下面我们先看这种吸引相互作用是怎么来的： 首先粒子，声子系统的总哈...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/25/2_01_%E9%9D%9E%E5%B9%B3%E8%A1%A1%E6%80%81/" title="非平衡态">非平衡态</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/condensed-matter/">condensed matter</a></span></div><div class="content">非平衡态经典体系下的非平衡态：从朗之万方程开始我们从简单的平衡态体系开始，对于温度为T的一维系统，给定其势能大小$V(X)$，其概率分布遵循玻尔兹曼分布： $$P(X)\propto \exp(-V(X)&#x2F;k_BT)$$ 处于能量最低的状态。然而，由于空间上的势垒，在绝热的改变势能的同时，系统的密度分布并不会处于能量的全局极小值。 作为例子，假设势能的形式写为： $$V(x)&#x3D;A+\frac{1}{2}Bx^2+\frac{1}{4}Cx^4+\frac{1}{6}Dx^6$$ 定义$C_0&#x3D;-\sqrt{\dfrac{16BD}{3}}$，则系统状态满足： $$0 &gt; C \begin{cases}    &gt; C_0, &amp; \text{稳态} \    &#x3D; C_0, &amp; \text{临界} \    &lt; C_0, &amp; \text{亚稳态}\    \end{cases}$$ 取$B&#x3D;1, C&#x3D;-4, D&#x3D;1$，这时当$C&lt;4$时，发生了系统从稳态向亚稳态的转变。...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/myblog/2026/07/21/01_%E9%A2%84%E5%85%88%E5%87%86%E5%A4%87_%E5%AE%89%E8%A3%85/" title="01 预先准备：安装">01 预先准备：安装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-20T16:00:00.000Z" title="发表于 2026-07-21 00:00:00">2026-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/myblog/categories/kwant/">kwant</a></span></div><div class="content">见 qsymm 笔记，会装 qsymm 的话 kwant 顺便也装了就行了。 </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/myblog/page/2/#content-inner">2</a><a class="page-number" href="/myblog/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/myblog/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/myblog/img/chy.png" onerror="this.onerror=null;this.src='/myblog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CHY</div><div class="author-info-description">记录学习与思考</div><div class="site-data"><a href="/myblog/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/myblog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/08/30/1_01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-08-29T16:00:00.000Z" title="发表于 2026-08-30 00:00:00">2026-08-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/01_Mott%E7%BB%9D%E7%BC%98%E4%BD%93/" title="Mott绝缘体">Mott绝缘体</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/02_Bethe_Ansatz%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E4%B8%80%E7%BB%B4%E6%B5%B7%E6%A3%AE%E5%A0%A1%E8%87%AA%E6%97%8B%E9%93%BE%E6%A8%A1%E5%9E%8B/" title="Bethe Ansatz方法求解一维海森堡自旋链模型">Bethe Ansatz方法求解一维海森堡自旋链模型</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/03_%E7%AC%94%E8%AE%B0_BASIC_NOTIONS_OF_CONDENSED_MATTER_PHYSICS/" title="笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)">笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/myblog/2026/07/25/05_%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E7%94%B5%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="相互作用电子系统">相互作用电子系统</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/myblog/categories/condensed-matter/"><span class="card-category-list-name">condensed matter</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/myblog/categories/kwant/"><span class="card-category-list-name">kwant</span><span class="card-category-list-count">15</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/myblog/archives/2026/08/">
+            <span class="card-archive-list-date">
+              八月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/myblog/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">24</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-08-30T08:29:58.409Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By CHY</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog/js/utils.js?v=5.6.0"></script><script src="/myblog/js/main.js?v=5.6.0"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
