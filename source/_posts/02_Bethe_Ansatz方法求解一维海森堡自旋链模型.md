@@ -11,10 +11,10 @@ categories:
 我们考虑周期性边界条件下长度为$L$的一维自旋1/2链，最近邻海森堡交换相互作用的哈密顿量为：
 
 $$
-H = J \sum_{n=1}^{L} \boxed{S}_n \cdot \boxed{S}_{n+1}, \quad \boxed{S}_{L+1} = \boxed{S}_1
+H = J \sum_{n=1}^{L} \mathbf{S}_n \cdot \mathbf{S}_{n+1}, \quad \mathbf{S}_{L+1} = \mathbf{S}_1
 $$
 
-其中$J>0$对应反铁磁相互作用，$J<0$对应铁磁相互作用，$\boxed{S}_n = (\sigma_n^x/2, \sigma_n^y/2, \sigma_n^z/2)$是第$n$个格点的自旋1/2算符，$\sigma^\alpha$为泡利矩阵。利用升降自旋算符$S_n^\pm = S_n^x \pm i S_n^y$，哈密顿量可以改写为：
+其中$J>0$对应反铁磁相互作用，$J<0$对应铁磁相互作用，$\mathbf{S}_n = (\sigma_n^x/2, \sigma_n^y/2, \sigma_n^z/2)$是第$n$个格点的自旋1/2算符，$\sigma^\alpha$为泡利矩阵。利用升降自旋算符$S_n^\pm = S_n^x \pm i S_n^y$，哈密顿量可以改写为：
 
 $$
 H = \frac{JL}{4} + J \sum_{n=1}^L \left( S_n^+ S_{n+1}^- + S_n^- S_{n+1}^+ + S_n^z S_{n+1}^z - \frac{1}{4} \right)

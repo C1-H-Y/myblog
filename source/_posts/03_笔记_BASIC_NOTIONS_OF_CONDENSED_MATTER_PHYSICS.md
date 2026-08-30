@@ -98,7 +98,7 @@ $$
 我们首先考虑一阶散射，由费米黄金定则，跃迁速率为：
 
 $$
-\frac{1}{\tau_{1k}}=2\pi\frac{n_{imp}}{V}\int d(\epsilon_k-\epsilon_{k'})|J_{kk'}|^2(1-cos\theta)\frac{d^3k'}{(2\pi)^3}
+\frac{1}{\tau_{1k}}=2\pi\frac{n_{imp}}{V}\int d(\epsilon_k-\epsilon_{k'})|J_{kk'}|^2(1-\cos\theta)\frac{d^3k'}{(2\pi)^3}
 $$
 
 Anyway, 我们不太关心具体是哪个自旋的散射，反正就是有这么一个散射振幅在。对所有的自旋方向平方求和($2S_z^2+S_+S_-+S_-S_+=2S(S+1)$)可以得到：
