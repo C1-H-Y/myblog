@@ -118,7 +118,7 @@ $$
 其中$G_0(\omega)=\frac{1}{H_0-\omega}$为自由格林函数。费曼图如图所示：
 
 <div align="center">
-  <img src="/images/4.png" width="400" alt="散射示意图"/>
+  <img src="/myblog/images/4.png" width="400" alt="散射示意图"/>
 
 </div>
 
@@ -164,7 +164,7 @@ $$
 相互作用，如图所示:
 
 <div align="center">
-  <img src="/images/4.1.png" width="500" alt="4.1.png"/>
+  <img src="/myblog/images/4.1.png" width="500" alt="4.1.png"/>
 
 </div>
 

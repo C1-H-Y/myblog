@@ -95,7 +95,7 @@ plt.show()
 画出来可以看出出现新的阶梯结构，来源于自旋对称与反对称能级的劈裂：
 
 <div align="center">
-  <img src="/images/1.2.1.png" width="500" alt="自旋轨道耦合情况下的电导率分布"/>
+  <img src="/myblog/images/1.2.1.png" width="500" alt="自旋轨道耦合情况下的电导率分布"/>
 </div>
 
 *图 1.2.1　自旋轨道耦合情况下的电导率分布*

@@ -118,13 +118,13 @@ if __name__ == '__main__':
 画出来的图如下：
 
 <div align="center">
-  <img src="/images/1.2.2.png" width="500" alt="环形系统示意图"/>
+  <img src="/myblog/images/1.2.2.png" width="500" alt="环形系统示意图"/>
 </div>
 
 *图 1.2.2　环形系统示意图*
 
 <div align="center">
-  <img src="/images/1.2.3.png" width="500" alt="环形系统电导率图像"/>
+  <img src="/myblog/images/1.2.3.png" width="500" alt="环形系统电导率图像"/>
 </div>
 
 *图 1.2.3　环形系统电导率图像*

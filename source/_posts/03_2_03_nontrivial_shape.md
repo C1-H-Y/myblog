@@ -11,7 +11,7 @@ categories:
 SQUID 的示意图如下：
 
 <div align="center">
-  <img src="/images/SQ.png" width="500" alt="SQUID 示意图"/>
+  <img src="/myblog/images/SQ.png" width="500" alt="SQUID 示意图"/>
 </div>
 
 *图 1.2.3-1　SQUID 示意图*
