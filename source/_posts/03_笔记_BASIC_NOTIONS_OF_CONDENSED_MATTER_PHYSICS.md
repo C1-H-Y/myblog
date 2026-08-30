@@ -1,5 +1,6 @@
 ---
 title: 笔记：BASIC NOTIONS OF CONDENSED MATTER PHYSICS (by P.W.ANDERSON)
+date: 2026-07-25
 categories:
   - condensed matter
 --- 

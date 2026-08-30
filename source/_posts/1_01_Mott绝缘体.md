@@ -1,5 +1,6 @@
 ---
 title: Mott绝缘体
+date: 2026-08-30
 categories:
   - condensed matter
 --- 

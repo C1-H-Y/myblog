@@ -1,5 +1,6 @@
 ---
 title: 03.2.1 格点上与 hopping 元素的矩阵结构
+date: 2026-07-21
 categories:
   - kwant
 --- 

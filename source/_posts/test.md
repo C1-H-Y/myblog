@@ -1,6 +1,7 @@
 ---
 title: test
 date: 2026-07-21
+date: 2026-07-21
 tags:
   - 数学
   - 测试

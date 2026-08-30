@@ -1,5 +1,6 @@
 ---
 title: 03.2.3 nontrivial shape
+date: 2026-07-21
 categories:
   - kwant
 --- 

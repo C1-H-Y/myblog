@@ -1,5 +1,6 @@
 ---
 title: 03.2.2 quantum well，也即在势场下的透射率
+date: 2026-07-21
 categories:
   - kwant
 --- 

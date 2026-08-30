@@ -1,5 +1,6 @@
 ---
 title: Bethe Ansatz方法求解一维海森堡自旋链模型
+date: 2026-07-25
 categories:
   - condensed matter
 --- 
